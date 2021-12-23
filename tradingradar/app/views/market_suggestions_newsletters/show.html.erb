@@ -1,0 +1,35 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Email:</strong>
+    <%= @market_suggestions_newsletter.email %>
+  </p>
+  <p>
+    <strong>Active:</strong>
+    <%= @market_suggestions_newsletter.active %>
+  </p>
+  <p>
+    <strong>Privacy:</strong>
+    <%= @market_suggestions_newsletter.privacy %>
+  </p>
+  <p>
+    <strong>Referrer:</strong>
+    <%= @market_suggestions_newsletter.referrer %>
+  </p>
+  <p>
+    <strong>Sended:</strong>
+    <%= @market_suggestions_newsletter.sended %>
+  </p>
+  <p>
+    <strong>Total sended:</strong>
+    <%= @market_suggestions_newsletter.total_sended %>
+  </p>
+  <p>
+    <strong>Code:</strong>
+    <%= @market_suggestions_newsletter.code %>
+  </p>
+  <%= link_to 'Edit', edit_market_suggestions_newsletter_path(@market_suggestions_newsletter) %> |
+  <%= link_to 'Back', market_suggestions_newsletters_path %>
+</div>

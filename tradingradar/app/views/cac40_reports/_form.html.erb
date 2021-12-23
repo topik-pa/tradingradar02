@@ -1,0 +1,117 @@
+<%= form_with(model: cac40_report, local: true) do |form| %>
+  <% if cac40_report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cac40_report.errors.count, "error") %> prohibited this cac40_report from being saved:</h2>
+
+      <ul>
+      <% cac40_report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :isin %>
+    <%= form.text_field :isin, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :stock %>
+    <%= form.text_field :stock, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :tradingsat_trendshort %>
+    <%= form.text_field :tradingsat_trendshort, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :tradingsat_trendmedium %>
+    <%= form.text_field :tradingsat_trendmedium, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :tradingsat_trendlong %>
+    <%= form.text_field :tradingsat_trendlong, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :boursefortuneo_support %>
+    <%= form.text_field :boursefortuneo_support, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :boursefortuneo_resistance %>
+    <%= form.text_field :boursefortuneo_resistance, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :boursefortuneo_volatility %>
+    <%= form.text_field :boursefortuneo_volatility, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :boursefortuneo_target %>
+    <%= form.text_field :boursefortuneo_target, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :boursefortuneo_rating %>
+    <%= form.text_field :boursefortuneo_rating, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :boursefortuneo_trendshort %>
+    <%= form.text_field :boursefortuneo_trendshort, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :boursefortuneo_trendmedium %>
+    <%= form.text_field :boursefortuneo_trendmedium, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :zonebourse_trendshort %>
+    <%= form.text_field :zonebourse_trendshort, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :zonebourse_trendmedium %>
+    <%= form.text_field :zonebourse_trendmedium, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :zonebourse_trendlong %>
+    <%= form.text_field :zonebourse_trendlong, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :zonebourse_resistance %>
+    <%= form.text_field :zonebourse_resistance, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :zonebourse_support %>
+    <%= form.text_field :zonebourse_support, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :abcbourse_consensus %>
+    <%= form.text_field :abcbourse_consensus, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :abcbourse_tendency %>
+    <%= form.text_field :abcbourse_tendency, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :lefigaro_consensus %>
+    <%= form.text_field :lefigaro_consensus, class:'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit nil, class: 'btn btn-primary' %>
+  </div>
+<% end %>

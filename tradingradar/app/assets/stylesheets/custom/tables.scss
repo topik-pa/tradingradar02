@@ -1,0 +1,57 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.table-wrapper {
+  overflow-x: auto;
+  position: relative;
+  opacity: 1;
+
+  &.loading {
+
+  }
+} 
+table {
+  table-layout: fixed;
+  
+  th, td {
+     overflow-x: hidden;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+     text-align: left;
+  }
+  th {
+    width: 175px;
+    /*text-align: center;*/
+    font-size: 90%;
+  }
+}
+
+
+/*.table-wrapper:after {
+  content: '';
+  position: absolute;
+  margin-top: 15px;
+  width: 64px;
+  height: 64px;
+  top: 50%;
+  left: 50%;
+  background-image: url(../images/isotope-loader.png);
+  background-position: -1152px 0;
+  animation: 0.7s sprite-animation steps(18) infinite;
+  transition: .8s all ease;
+  transform: translate(-50%, -50%);
+}
+
+.table-wrapper.loaded:after {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+.table-wrapper.loading table {
+  opacity: 0;
+  transition: .8s opacity ease;
+}*/
+

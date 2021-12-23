@@ -1,0 +1,135 @@
+<% provide(:page_title, @analysis.title) %>
+<!--Market selection in top page -->
+<%= render("partials/market-selection") %>
+<!--Logo and menu-->
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<section class="bg-white section-bottom-60 section-xs">
+  <div class="shell">
+    <div class="range range-center">
+      <!-- Post body -->
+      <div class="cell-md-8 cell-lg-8">
+        <div class="post-content">
+          <ul class="tag-list">
+            <li>
+              <%= link_to(@analysis['market'], {:controller => "market", :action => @analysis['market']}) %>
+            </li>
+            <li>
+              <%= link_to @analysis['stock'], {:controller => "stock", :action => "index", :id => @analysis['stock'].parameterize, :isin => @analysis['isin']} %>
+            </li>
+          </ul>
+          <h2><%= @analysis.title %></h2>
+          <ul class="meta-list">
+            <li>
+              by <%= link_to @analysis['author'], controller: "analyses", action: "index", query: @analysis['author'] %>
+            </li>
+            <li>
+              <time datetime="<%= @analysis['created_at'] %>">
+                <%= @analysis['created_at'] %>
+              </time>
+            </li>
+          </ul>
+          <h3><%= @analysis.description %></h3>
+          <div class="post-body">
+            <%= @analysis.body.html_safe %>
+          </div>
+          <div class="tag-block bottom-block">
+            <div class="share">
+              <div class="soc-icon"><a class="icon fa-twitter" href="#"></a><a class="icon fa-facebook" href="#"></a><a class="icon fa-google-plus" href="#"></a><a class="icon fa-youtube-play" href="#"></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="author-block">
+          <div class="unit unit-vertical unit-xs-horizontal unit-xs-middle">
+            <div class="unit__left text-center text-xs-left">
+              <img src="<%= $imagePath + 'banners/' + 'bestForMarketsBanner_2.jpg' %>" width="151" height="151" alt="<%= t('layouts.application.analysisBy') + @analysis.author %>">
+            </div>
+            <div class="unit__body">
+              <h3><%= t('layouts.application.writtenBy') %><span class="text-primary"><%= @analysis.author %></span></h3>
+              <p><%= t('layouts.application.marcoDescription') %></p>
+            </div>
+          </div>
+        </div>
+        <div class="post-nav">
+
+          <% if @prevPost %>
+            <div class="prev-post">
+              <%= link_to controller: "analyses", action: "show", id: @prevPost.id do %>
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;<%= t('layouts.application.prevPost') %>
+              <% end %>
+              <h5>
+                <%= link_to controller: "analyses", action: "show", id: @prevPost.id do %>
+                  <%= @prevPost.title %>
+                <% end %>
+              </h5>
+            </div>
+          <% end %>
+
+          <% if @nextPost %>
+            <div class="next-post">
+              <%= link_to controller: "analyses", action: "show", id: @nextPost.id do %>
+                <%= t('layouts.application.nextPost') %>&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i>
+              <% end %>
+              <h5>
+                <%= link_to controller: "analyses", action: "show", id: @nextPost.id do %>
+                  <%= @nextPost.title %>
+                <% end %>
+              </h5>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+      <!-- Sidebar -->
+      <div class="cell-md-4">
+        <%= render("partials/sidebar") %>
+      </div>
+    </div>
+    <% if current_user && current_user.admin? %>
+      <section class="administration">
+        <div class="shell">
+          <p id="notice"><%= notice %></p>
+          <p>
+            <strong>Title:</strong>
+            <%= @analysis.title %>
+          </p>
+          <p>
+            <strong>Description:</strong>
+            <%= @analysis.description %>
+          </p>
+          <p>
+            <strong>Body:</strong>
+            <%= @analysis.body.html_safe %>
+          </p>
+          <p>
+            <strong>Stock:</strong>
+            <%= @analysis.stock %>
+          </p>
+          <p>
+            <strong>Reuters:</strong>
+            <%= @analysis.reuters %>
+          </p>
+          <p>
+            <strong>Isin:</strong>
+            <%= @analysis.isin %>
+          </p>
+          <p>
+            <strong>Author:</strong>
+            <%= @analysis.author %>
+          </p>
+          <p>
+            <strong>Market:</strong>
+            <%= @analysis.market %>
+          </p>
+          <p>
+            <strong>Slug:</strong>
+            <%= @analysis.slug %>
+          </p>
+          <%= link_to 'Edit', edit_analysis_path(@analysis) %> |
+          <%= link_to 'Back', analyses_path %>
+        </div>
+      </div>
+    </section>
+  <% end %>
+  <!--The main content-->
+</section>

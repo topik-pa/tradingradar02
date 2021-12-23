@@ -1,0 +1,12 @@
+<h1>An error was occurred on server!</h1>
+
+<p>
+  <%= t('server_error_occurred_mailer.generic.greeting', username: @username) %>
+  <br/>
+  <%= t('server_error_occurred_mailer.generic.body') %>
+  <br/>
+  <br/>
+</p>
+<p>
+ <%= @error %>
+</p>

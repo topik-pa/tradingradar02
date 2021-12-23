@@ -1,0 +1,19 @@
+<section class="anchors section-mp">
+  <div class="shell">
+    <div class="range range-xs-center">
+      <div class="cell-xs-10 cell-sm-8 cell-md-12">
+        <div class="range range-xs-center">
+          <% @stockMediaData['media'].each do |media| %>
+            <div class="cell-xs-5 cell-md-3 anchor-wrap">
+              <div class="counter-wrap">
+                <div class="anchor loading heading-1" data-refers="<%= media['id'] %>">
+                  <a href="#<%= media['id'] %>" data-turbolinks="false"><%= media['name'] %></a>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

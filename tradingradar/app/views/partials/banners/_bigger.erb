@@ -1,0 +1,35 @@
+<div class="cell-lg-8 bigger">
+  <!-- Swiper-->
+  <div class="swiper-container swiper-slider-type-1 main-banner" data-loop="false" data-autoplay="false" data-simulate-touch="false">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="swiper-slide-caption">
+          <div class="post-type-1 post-type-1-mode">
+            <img src="<%= $imagePath + 'banners/bigger/' + @mainBannerImage[:filename] %>" width="930" height="692" alt="<%= @mainBannerImage[:description] %>">
+            <% if controller_name == 'home'%>
+              <ul class="tag-list">
+                <li>
+                  <%= link_to(t('layouts.application.italybest4'), {:anchor => "italy_filters"}, {:'data-turbolinks' =>  'false', :'data-scrollTo' => "italy_filters" }) %>
+                </li>
+                <li>
+                  <%= link_to(t('layouts.application.francebest4'), {:anchor => "france_filters"}, {:'data-turbolinks' =>  'false', :'data-scrollTo' => "france_filters"  }) %>
+                </li>
+              </ul>
+            <% end %>
+            <div class="fig-caption">
+              <%= @mainBannerImage[:description].html_safe %>
+            </div>
+            <div class="caption">
+              <h2 class="title"> <%= @mainBannerImage[:caption] %> </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Swiper Pagination-->
+    <div class="swiper-pagination"></div>
+    <!-- Swiper Navigation-->
+    <div class="swiper-button-prev fa-arrow-left"></div>
+    <div class="swiper-button-next fa-arrow-right"></div>
+  </div>
+</div>

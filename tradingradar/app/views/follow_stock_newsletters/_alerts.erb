@@ -1,0 +1,12 @@
+
+<% if @follow_stock_newsletter.errors.any? %>		
+	<div class="alert alert-danger" role="alert">
+		<ul><% @follow_stock_newsletter.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul>
+		<div><%= alert %></div>
+ 	</div>
+<% else %>  
+  	<div class="notice alert alert-success" role="alert">
+		<%= notice %>
+	</div>
+<% end %>
+	

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  isin: MyString
+  stock: MyString
+  finanzen_rating: 9.99
+  finanzen_ratingmoodys: 9.99
+  finanzen_sentiment: 9.99
+
+two:
+  isin: MyString
+  stock: MyString
+  finanzen_rating: 9.99
+  finanzen_ratingmoodys: 9.99
+  finanzen_sentiment: 9.99

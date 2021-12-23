@@ -1,0 +1,8 @@
+<!-- RD Navbar Brand-->
+<div class="rd-navbar-brand">
+  <%= link_to({:controller => "home", :action => "index"}, class: "brand-name") do %>
+    <span>
+      <%= image_tag($imagePath + "tradingradar-logo-text.svg", alt: t('layouts.application.logoDescription')) %>
+    </span>
+  <% end %>
+</div>

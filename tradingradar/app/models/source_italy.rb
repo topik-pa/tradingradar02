@@ -1,0 +1,2 @@
+class SourceItaly < ApplicationRecord
+end

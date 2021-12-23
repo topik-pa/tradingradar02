@@ -1,0 +1,66 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <h1>Cac40 Reports</h1>
+  <div class="table-wrapper">
+    <table class="table table-hover table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Isin</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Tradingsat trendshort</th>
+          <th scope="col">Tradingsat trendmedium</th>
+          <th scope="col">Tradingsat trendlong</th>
+          <th scope="col">Boursefortuneo support</th>
+          <th scope="col">Boursefortuneo resistance</th>
+          <th scope="col">Boursefortuneo volatility</th>
+          <th scope="col">Boursefortuneo target</th>
+          <th scope="col">Boursefortuneo rating</th>
+          <th scope="col">Boursefortuneo trendshort</th>
+          <th scope="col">Boursefortuneo trendmedium</th>
+          <th scope="col">Zonebourse trendshort</th>
+          <th scope="col">Zonebourse trendmedium</th>
+          <th scope="col">Zonebourse trendlong</th>
+          <th scope="col">Zonebourse resistance</th>
+          <th scope="col">Zonebourse support</th>
+          <th scope="col">Abcbourse consensus</th>
+          <th scope="col">Abcbourse tendency</th>
+          <th scope="col">Lefigaro consensus</th>
+          <th scope="col" colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cac40_reports.each do |cac40_report| %>
+          <tr class='<%= cycle('odd', 'even') %>'>
+            <td title="<%= cac40_report.isin %>"><%= cac40_report.isin %></td>
+            <td title="<%= cac40_report.stock %>"><%= cac40_report.stock %></td>
+            <td title="<%= cac40_report.tradingsat_trendshort %>"><%= cac40_report.tradingsat_trendshort %></td>
+            <td title="<%= cac40_report.tradingsat_trendmedium %>"><%= cac40_report.tradingsat_trendmedium %></td>
+            <td title="<%= cac40_report.tradingsat_trendlong %>"><%= cac40_report.tradingsat_trendlong %></td>
+            <td title="<%= cac40_report.boursefortuneo_support %>"><%= cac40_report.boursefortuneo_support %></td>
+            <td title="<%= cac40_report.boursefortuneo_resistance %>"><%= cac40_report.boursefortuneo_resistance %></td>
+            <td title="<%= cac40_report.boursefortuneo_volatility %>"><%= cac40_report.boursefortuneo_volatility %></td>
+            <td title="<%= cac40_report.boursefortuneo_target %>"><%= cac40_report.boursefortuneo_target %></td>
+            <td title="<%= cac40_report.boursefortuneo_rating %>"><%= cac40_report.boursefortuneo_rating %></td>
+            <td title="<%= cac40_report.boursefortuneo_rating %>"><%= cac40_report.boursefortuneo_trendshort %></td>
+            <td title="<%= cac40_report.boursefortuneo_trendmedium %>"><%= cac40_report.boursefortuneo_trendmedium %></td>
+            <td title="<%= cac40_report.zonebourse_trendshort %>"><%= cac40_report.zonebourse_trendshort %></td>
+            <td title="<%= cac40_report.zonebourse_trendmedium %>"><%= cac40_report.zonebourse_trendmedium %></td>
+            <td title="<%= cac40_report.zonebourse_trendlong %>"><%= cac40_report.zonebourse_trendlong %></td>
+            <td title="<%= cac40_report.zonebourse_resistance %>"><%= cac40_report.zonebourse_resistance %></td>
+            <td title="<%= cac40_report.zonebourse_support %>"><%= cac40_report.zonebourse_support %></td>
+            <td title="<%= cac40_report.abcbourse_consensus %>"><%= cac40_report.abcbourse_consensus %></td>
+            <td title="<%= cac40_report.abcbourse_tendency %>"><%= cac40_report.abcbourse_tendency %></td>
+            <td title="<%= cac40_report.lefigaro_consensus %>"><%= cac40_report.lefigaro_consensus %></td>
+            <td><%= link_to 'Show', cac40_report %></td>
+            <td><%= link_to 'Edit', edit_cac40_report_path(cac40_report) %></td>
+            <td><%= link_to 'Destroy', cac40_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <%= link_to 'New Cac40 Report', new_cac40_report_path %>
+</div>

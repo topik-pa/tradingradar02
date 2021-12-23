@@ -1,0 +1,64 @@
+<div class="text-center page">
+  <%= render("partials/header/header-light") %>
+  <% if @stock.present? %>
+    <%= render("partials/press-release/page-title") %>
+    <%= render("partials/press-release/page-breadcrumbs") %>
+    <%= render("partials/press-release/general-infos") %>
+    <%= render("partials/press-release/profile") %>
+    <%= render("partials/press-release/green-infos-section") %>
+    <div class="section-md title bg-white">
+      <h2><%= t('layouts.application.pressReleaseTitle') %></h2>
+      <%= render("partials/press-release/anchors") %>
+    </div>
+    <% @stockMediaData['media'].each do |media| %>
+      <section id="<%= media['id'] %>" class="section-md bg-white">
+        <!--MEDIA TITLE-->
+        <% if media['name'] %>
+          <div class="shell">
+            <h3 class="media-name">
+              <%= media['name'] %>
+            </h3>
+            <p class="text-gray-dark text-sbold">
+              <%= t('layouts.application.source') %>
+              <%= link_to media['name'], media['url'], target: "_blank", rel: "alternate" %>
+            </p>
+          </div>
+        <% end %>
+        <!--BLU SECTION-->
+        <div class="section-mp bg-image context-dark">
+          <div class="shell">
+            <div class="range range-xs-center">
+              <div class="cell-xs-10 cell-sm-8 cell-md-12">
+                <div class="range range-xs-center range-60">
+                  <% media['data'].each do |data| %>
+                    <div class="cell-xs-5 cell-md-2">
+                      <div class="counter-wrap">
+                        <div class="heading-1"><span class="counter animated" data-step="3000"><%= data['value'] %></span></div>
+                        <p class="counter-text-type-1"><%= data['label'] %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--PR SECTION-->
+        <div class="<%= media['class'] %>">
+          <div class="shell pr-section" data-source="<%= media['id'] %>" lang="<%= media['iso'] %>">
+            
+            <input type="hidden" name="url-swap" value="<%= media['rootUrl'] %>">
+          </div>
+
+          <%= link_to t('layouts.application.originalSource'), media['url'], target: "_blank", rel: "alternate", class: 'tooriginal' %>
+
+        </div>
+      </section>
+    <% end %>
+    <section class="section-md bg-gray">
+      <div class="shell">
+        <h2><%= @stock.name %></h2>
+      </div>
+    </section>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<section class="section-breadcrumbs">
+  <div class="shell breadcrumb-wrapper">
+    <ol class="breadcrumb-custom">
+      <li><%= link_to t('layouts.application.home'), :controller => "home", :action => "index" %></li>
+      <li><%= link_to t(@stockMediaData['breadcrumbLink']), :controller => "market", :action => @market %></li>
+      <li><%= @stock.name %></li>
+    </ol>
+  </div>
+</section>

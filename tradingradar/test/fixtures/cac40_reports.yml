@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  isin: MyString
+  stock: MyString
+  tradingsat_trendshort: MyString
+  tradingsat_trendmedium: MyString
+  tradingsat_trendlong: MyString
+  boursefortuneo_support: 9.99
+  boursefortuneo_resistance: 9.99
+  boursefortuneo_volatility: 9.99
+  boursefortuneo_target: 9.99
+  boursefortuneo_rating: 9.99
+  boursefortuneo_trendshort: MyString
+  boursefortuneo_trendmedium: MyString
+  zonebourse_trendshort: MyString
+  zonebourse_trendmedium: MyString
+  zonebourse_trendlong: MyString
+  zonebourse_resistance: 9.99
+  zonebourse_support: 9.99
+  abcbourse_consensus: MyString
+  abcbourse_tendency: MyString
+  lefigaro_consensus: MyString
+
+two:
+  isin: MyString
+  stock: MyString
+  tradingsat_trendshort: MyString
+  tradingsat_trendmedium: MyString
+  tradingsat_trendlong: MyString
+  boursefortuneo_support: 9.99
+  boursefortuneo_resistance: 9.99
+  boursefortuneo_volatility: 9.99
+  boursefortuneo_target: 9.99
+  boursefortuneo_rating: 9.99
+  boursefortuneo_trendshort: MyString
+  boursefortuneo_trendmedium: MyString
+  zonebourse_trendshort: MyString
+  zonebourse_trendmedium: MyString
+  zonebourse_trendlong: MyString
+  zonebourse_resistance: 9.99
+  zonebourse_support: 9.99
+  abcbourse_consensus: MyString
+  abcbourse_tendency: MyString
+  lefigaro_consensus: MyString

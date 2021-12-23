@@ -1,0 +1,9 @@
+<section class="section-md bg-white">
+  <div class="shell">
+    <h3><%= t('layouts.application.profile') %></h3>
+    <p>
+      <%= truncate_html @stock.profile, :length => 320, :omission => "..." %> &nbsp; 
+      <%= link_to t('layouts.application.readMore'), @stockMediaData['urlCompanyProfile'], target: "_blank", rel: "alternate" %>
+    </p>
+  </div>
+</section>

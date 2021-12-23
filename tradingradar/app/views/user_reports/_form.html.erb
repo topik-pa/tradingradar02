@@ -1,0 +1,77 @@
+<%= form_with(model: user_report, local: true) do |form| %>
+  <% if user_report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_report.errors.count, "error") %> prohibited this user_report from being saved:</h2>
+
+      <ul>
+      <% user_report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :isin %>
+    <%= form.text_field :isin, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :stock %>
+    <%= form.text_field :stock, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :support %>
+    <%= form.text_field :support, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :resistance %>
+    <%= form.text_field :resistance, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :trendshort %>
+    <%= form.text_field :trendshort, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :trendmedium %>
+    <%= form.text_field :trendmedium, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :trendlong %>
+    <%= form.text_field :trendlong, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :rating %>
+    <%= form.number_field :rating, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :note %>
+    <%= form.text_area :note, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :buy %>
+    <%= form.text_field :buy, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sell %>
+    <%= form.text_field :sell, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sl %>
+    <%= form.text_field :sl, class:'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit nil, class: 'btn btn-primary' %>
+  </div>
+<% end %>

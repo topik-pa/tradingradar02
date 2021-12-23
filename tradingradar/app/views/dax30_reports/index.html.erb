@@ -1,0 +1,36 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <h1>Dax30 Reports</h1>
+  <div class="table-wrapper">
+    <table class="table table-hover table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Isin</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Finanzen rating</th>
+          <th scope="col">Finanzen ratingmoodys</th>
+          <th scope="col">Finanzen sentiment</th>
+          <th scope="col" colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @dax30_reports.each do |dax30_report| %>
+          <tr class='<%= cycle('odd', 'even') %>'>
+            <td title="<%= dax30_report.isin %>"><%= dax30_report.isin %></td>
+            <td title="<%= dax30_report.stock %>"><%= dax30_report.stock %></td>
+            <td title="<%= dax30_report.finanzen_rating %>"><%= dax30_report.finanzen_rating %></td>
+            <td title="<%= dax30_report.finanzen_ratingmoodys %>"><%= dax30_report.finanzen_ratingmoodys %></td>
+            <td title="<%= dax30_report.finanzen_sentiment %>"><%= dax30_report.finanzen_sentiment %></td>
+            <td><%= link_to 'Show', dax30_report %></td>
+            <td><%= link_to 'Edit', edit_dax30_report_path(dax30_report) %></td>
+            <td><%= link_to 'Destroy', dax30_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <%= link_to 'New Dax30 Report', new_dax30_report_path %>
+</div>

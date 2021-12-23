@@ -1,0 +1,30 @@
+<div id="market_suggestion_newsletters_wrap" class="nl-wrapper">
+	<h6><%= t('layouts.application.followTheMarket')%></h6>
+	<p>
+		<%= t('layouts.application.getInfoFromMarkets')%>
+	</p>
+	<%=	form_tag({controller: "market_suggestions_newsletters"}, action: "create", :class => 'rd-mailform text-center', remote: true) do  %>
+
+	<div class="alert-wrapper"></div>
+
+	<%= hidden_field(:market_suggestions_newsletter, :active, :value => 'true') %>
+
+	<%= hidden_field(:market_suggestions_newsletter, :referrer, :value => '0') %>
+
+	<div class="form-wrap">
+		<%= label(:market_suggestions_newsletter, :email, class: "form-label") do
+      '<span class="icon mdi-email mdi"></span>'.html_safe
+    end %>
+		<%= email_field(:market_suggestions_newsletter, :email, class: "form-input", placeholder: t('layouts.application.yourMail'), data: {constraints: '@Required'}) %>
+	</div>
+
+	<div class="form-wrap privacy">
+		<%= check_box(:market_suggestions_newsletter, :privacy) %>
+		<p class="label-like"><%= t('layouts.application.privacy_message_html', href: link_to(t('layouts.application.privacy_html'), pages_privacy_policy_path)) %></p>
+	</div>
+
+	<div class="form-wrap form-footer">
+		<%= submit_tag(t('layouts.application.subscribeBtn'), :class => 'btn btn-primary') %>
+	</div>
+	<% end %>
+</div>

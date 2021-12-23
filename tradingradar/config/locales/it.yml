@@ -1,0 +1,214 @@
+it:
+  hello: 'Ciao'  
+  application: 
+    name: 'tradingradar.net'
+    appDescription: 'Trading Radar scandaglia il Web alla ricerca di notizie, analisi e segnali operativi sui titoli azionari delle principali Borse internazionali.'
+    keywords: 'trading, titolo, finanza, borsa, online, valutazioni, segnali, acquisto, vendita'
+    mission: 'Le analisi sui principali titoli azionari... in un click!'
+    mission2: 'Tutti i segnali dei mercati azionari' 
+    mission3: 'Avvista ora il prossimo titolo Toro!'
+    author: 'Marco Pavan'
+    adminEmail: 'admin@tradingradar.net'
+    infoEmail: 'info@tradingradar.net'
+
+  banners: 
+    shpBanner1-it: 'Palazzo Mezzanotte - sede della Borsa di Milano'
+    shpBanner1-fr: 'Palais Brongniart - sede della Borsa di Parigi'
+    hpBanner1-it: 'Palazzo Mezzanotte - sede della Borsa di Milano - giorno'
+    hpBanner2-it: 'Palazzo Mezzanotte - sede della Borsa di Milano - notte'
+    hpBanner1-fr: 'Palais Brongniart - sede della Borsa di Parigi - giorno'
+    hpBanner2-fr: 'Palais Brongniart - sede della Borsa di Parigi - notte'
+
+  markets:
+    italy: 'Italia FTSE MIB'
+    france: 'Francia CAC40' 
+
+  languages:
+    english: 'Inglese'
+    italian: 'Italiano'  
+
+  media:
+    ilSole24ore: 'Il Sole 24 Ore'
+    milanoFinanza: 'Milano Finanza'
+    borsaItaliana: 'Borsa Italiana'
+    teleBorsa: 'Teleborsa'
+    leFigaro: 'Le Figaro'
+    borseFortuneo: 'Borse Fortuneo'
+    tradingSat: 'Trading Sat'
+    zoneBourse: 'Zone Bourse'
+    abcBourse: 'ABC Bourse'
+
+  socials:
+    facebook: 'https://www.facebook.com/tradingradar'
+    twitter: 'https://twitter.com/TradingradarN'
+
+  activerecord:
+    errors:
+      generic: ''
+      models:
+        follow_stock_newsletter: 
+          attributes:
+            stock:
+              blank: ' è un campo obbligatorio'
+            privacy:
+              blank: ' è un campo obbligatorio' 
+            email:
+              blank: ' è un campo obbligatorio' 
+              taken: ' già associata a questo titolo azionario.'
+        market_suggestions_newsletter: 
+          attributes:
+            privacy:
+              blank: ' è un campo obbligatorio' 
+            email:
+              blank: ' è un campo obbligatorio'  
+              taken: ' già presente in questa newsletter.'             
+    confirm:
+      models:
+        follow_stock_newsletter:
+          created: 'Newsletter Follow Stock creata.'
+        market_suggestion_newsletter:
+          created: 'Newsletter Market Suggestions creata.'  
+
+  server_error_occurred_mailer:
+    generic:
+      subject: 'tradingradar.net: server error'
+      greeting: 'Ciao %{username},'   
+      body: 'il server ha appena generato un errore, maggiori dettagli li puoi avere dal codice seguente:' 
+
+  contacts:
+    messageSent: 'Grazie! Il tuo messaggio è stato spedito regolarmente.' 
+    messageError: 'Qualcosa non ha funzionato: mail non inviata. Hai compilato tutti i campi?' 
+
+  layouts:
+    application:
+      marketFlag: 'bandierina di mercato'
+      logoDescription: 'Trading Radar logo' 
+
+      contacts: 'Contatti'
+      home: 'Home'
+      stockAnalysis: 'Analisi titoli'
+      about_html: 'Cos&apos;&egrave; Trading Radar'
+      loginRegister: 'Login / Registrazione'
+      logout: 'Log out'
+      login: 'Login'
+      ctaSearch: 'Sto cercando...'
+
+      email: 'Email'
+      password: 'Password'
+      
+      notRegisteredYetQuestion_html: 'Ancora non sei registrato?<br/>Vai al %{href}!'
+      registrationLink_html: 'form di Registrazione'
+
+      subscribe: 'Registrati alle Newsletter'
+      followTheStock: 'Segui il Titolo!'
+      followTheMarket: 'Segui il Mercato!'
+      followTheStock_cta: 'Segui il Titolo'
+      followTheMarket_cta: 'Segui il Mercato'
+      getInfoFromStock: 'Ottieni segnali e news per il titolo selezionato direttamente sulla tua mail.'
+      getInfoFromMarkets: 'Ottieni informazioni dai Mercati direttamente sulla tua mail.'
+      selectStock: 'Scegli il tuo titolo'
+      yourMail: 'Inserisci la tua email'
+      privacy_message_html: 'Dichiaro di aver preso visione della informativa sulla %{href} e di accettarne tutte le condizioni.'
+      privacy_html: 'privacy'
+      subscribeBtn: 'Iscriviti'
+      gainInfoAboutStock: 'Ottieni quotidianamente le ultime analisi sul tuo Titolo direttamente sulla tua email'
+      gainInfoAboutMarket: 'Ottieni quotidianamente le ultime analisi dal Mercato direttamente sulla tua email'
+      followUs: 'Seguici su: '
+      yourName: 'Il tuo nome'
+      yourEmail: 'La tua email'
+      yourComment: 'Messaggio'
+      send: 'Invia'
+
+      italybest4: 'Italy best 4'
+      francebest4: 'France best 4'
+
+      bestTitle: 'Titolo del giorno: '
+      noDataYet: 'Nessun dato ancora'
+      noAnalysisYet: 'Nessuna analisi disponibile'
+  
+      marketsTitle: 'I Mercati'
+      marketsubTitle: 'La situazione grafica attuale dei mercati'
+      best4Title: 'I titoli più interessanti'
+      best4Subtitle: 'Per ogni Media, la selezione dei migliori quattro titoli basata sulle loro valutazioni'
+      lastsBlogPostTitle: 'Ultimi post' 
+
+      categories: 'Argomenti'  
+      ourAnalyses: 'Le nostre analisi'
+      information: 'Informazioni'
+    
+      sendSuggestionTitle: 'Idee o suggerimenti?'
+      sendSuggestionBody: 'Scrivi qui quello che pensi (lascia una email, se desideri una risposta)'
+      sendSuggestionWriteHere: 'Scrivi qui...'
+      sendSuggestionSend: 'Invia'
+      
+      name: 'Nome'
+      sector: 'Settore'
+      variation: 'Variazione'
+      perf1: 'Performance 1 mese'
+      perf6: 'Performance 6 mesi'
+      perf12: 'Performance 12 mesi'
+      support: 'Supporto'
+      resistance: 'Resistenza'
+      strategy: 'Strategia'
+      mediumTrend: 'Trend medio'
+      shortTrend: 'Trend breve'
+      longTrend: 'Trend lungo'
+      risk: 'Rischio'
+      rating: 'Rating'
+      relativeStrenght: 'Forza relativa'
+      target: 'Target' 
+      market: 'Mercato'
+      contacts: 'Contatti'
+      performance: 'Performance'
+      isin: 'ISIN'
+      reuters: 'Reuters'
+      site: 'Sito'
+      address: 'Indirizzo'
+      phone: 'Tel.'
+      profile: 'Profilo azienda'
+      dividend: 'Dividendo'
+      dividendDate: 'Data dividendo'
+      dividendYeld: 'Rapporto dividendo'
+      lastPrice: 'Ultimo prezzo'
+      marketPhase: 'Fase di mercato'
+      source: 'Fonte: ' 
+      fta: 'FTA'
+      rsi: 'RSI'
+      volatility: 'Volatilità'
+      rsidiv: 'Divergenza RSI'
+      strategy: 'Strategia'
+      consensus: 'Consensus'
+      tendency: 'Tendenza'
+
+      stockList: 'I titoli'
+      pressReleaseTitle: 'Rassegna stampa'
+      pressReleaseSubtitle: 'con analisi, terget price, e molto altro dai principali Media online'
+      readMore: 'Continua >'
+      originalSource: 'Vedi la fonte originale'
+      lastSixAnalyses: 'Ultime 6 analisi'
+      allAnalyses: 'Tutte le analisi'
+      analysisBy: 'Analysis by '
+      writtenBy: 'Scritto da '
+      marcoDescription: 'I am a professional blogger interested in everything taking place in cyberspace. I am running this website and try my best to make it a better place to visit.'
+      prevPost: 'Post precedente'
+      nextPost: 'Post successivo' 
+    contactsPage:
+      title: 'Contattaci'
+      subtitle: 'Utilizza questo form per richieste e chiarimenti'
+      personalContact: 'Contatto diretto: '
+      generalInfos: 'Info generali: '
+      notabene: 'La tua email non sarà pubblicata. Tutti i campi sono obbligatori.'
+    aboutPage: 
+      title: 'Chi siamo'
+      subtitle: 'Analisi tecnica, news e segnali operativi sui titoli delle Borse Internazionali'
+      body_html: '<h2>Cosa? </h2><p>Ogni ora Trading Radar scandaglia il Web alla ricerca di informazioni circa la situazione tecnica dei titoli azioniari della <strong>Borsa di Milano</strong>.</p><p>Attraverso questi dati è possibile ricostruire una <strong>analisi aggiornata</strong> di ogni titolo ed elaborare dei filtri che elencano le <strong>azioni di borsa più interessanti</strong> in quel dato momento. <br>Per ogni titolo, inoltre, è disponibile una <strong>rassegna stampa</strong> in tempo reale che darà una più completa panoramica anche dal punto di vista dell&apos;analisi fondamentale elencando: notizie, dividendi, rating di agenzie, dati finanziari e i link alla pagina originaria.</p>'
+    searchPage:
+      title: 'Risultati'
+      subtitle: 'Titoli'
+      subtitle2: 'Post'
+      noResults: 'Nessun risultato disponibile'
+    messagePage:
+      somethingWrong: 'Qualcosa è andato storto. Per favore, contatta l amministratore del sito.'
+      emailResetOK: 'Ok... Il contatore della tua newsletter è stato ripristinato. Grazie per il tuo interessamento!'
+    
+

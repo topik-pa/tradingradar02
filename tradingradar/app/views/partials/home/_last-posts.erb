@@ -1,0 +1,42 @@
+<div class="section-xs">
+  <div class="section-title">
+    <h3><%= t('layouts.application.lastsBlogPostTitle') %></h3>
+  </div>
+  <div class="range range-20">
+    <% if $last6BlogAnalysesPosts%>
+      <% $last6BlogAnalysesPosts.each do |post| %>
+        <div class="cell-xs-4 cell-sm-6 cell-lg-4">
+          <div class="post-type-3">
+            <div class="unit">
+              <div class="unit__left">
+                <div class="img-block">
+                  <%= link_to(analysis_path(post)) do %>
+                    <%= image_tag($imagePath + 'logo/' + post['reuters'] + '.png', :alt =>  post['name']) %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="unit__body">
+                <h5 class="title"><%= link_to post['stock'], post %></h5>
+                <p>
+                  <%= truncate_html post['body'], :length => 320, :omission => "..." %>
+                </p>
+                <div class="bottom-block">
+                  <ul class="meta-list">
+                    <li>
+                      by <%= link_to post['author'], controller: "analyses", action: "index", query: post['author'] %>
+                    </li>
+                    <li>
+                      <time datetime="<%= post['created_at'] %>">
+                        <%= post['created_at'] %>
+                      </time>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

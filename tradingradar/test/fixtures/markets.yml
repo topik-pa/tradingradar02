@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  value: 9.99
+  variation: 9.99
+  country: MyString
+
+two:
+  name: MyString
+  value: 9.99
+  variation: 9.99
+  country: MyString

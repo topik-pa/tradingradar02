@@ -1,0 +1,81 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Isin:</strong>
+    <%= @fias_report.isin %>
+  </p>
+  <p>
+    <strong>Stock:</strong>
+    <%= @fias_report.stock %>
+  </p>
+  <p>
+    <strong>Borsaitaliana support:</strong>
+    <%= @fias_report.borsaitaliana_support %>
+  </p>
+  <p>
+    <strong>Borsaitaliana resistance:</strong>
+    <%= @fias_report.borsaitaliana_resistance %>
+  </p>
+  <p>
+    <strong>Borsaitaliana fta:</strong>
+    <%= @fias_report.borsaitaliana_fta %>
+  </p>
+  <p>
+    <strong>Borsaitaliana rsi:</strong>
+    <%= @fias_report.borsaitaliana_rsi %>
+  </p>
+  <p>
+    <strong>Borsaitaliana volatility:</strong>
+    <%= @fias_report.borsaitaliana_volatility %>
+  </p>
+  <p>
+    <strong>Sole24ore shorttrend:</strong>
+    <%= @fias_report.sole24ore_shorttrend %>
+  </p>
+
+  <p>
+    <strong>Sole24ore madiumtrend:</strong>
+    <%= @fias_report.sole24ore_mediumtrend %>
+  </p>
+  <p>
+    <strong>Sole24ore rating:</strong>
+    <%= @fias_report.sole24ore_rating %>
+  </p>
+  <p>
+    <strong>Sole24ore relativestrenght:</strong>
+    <%= @fias_report.solesole24ore_relativestrenght24ore_shorttrend %>
+  </p>
+  
+  <p>
+    <strong>Milanofinanza risk:</strong>
+    <%= @fias_report.milanofinanza_risk %>
+  </p>
+  <p>
+    <strong>Milanofinanza rating:</strong>
+    <%= @fias_report.milanofinanza_rating %>
+  </p>
+  <p>
+    <strong>Milanofinanza trendshort:</strong>
+    <%= @fias_report.milanofinanza_trendshort %>
+  </p>
+  <p>
+    <strong>Milanofinanza trendmedium:</strong>
+    <%= @fias_report.milanofinanza_trendmedium %>
+  </p>
+  <p>
+    <strong>Milanofinanza trendlong:</strong>
+    <%= @fias_report.milanofinanza_trendlong %>
+  </p>
+  <p>
+    <strong>Teleborsa support:</strong>
+    <%= @fias_report.teleborsa_support %>
+  </p>
+  <p>
+    <strong>Teleborsa resistance:</strong>
+    <%= @fias_report.teleborsa_resistance %>
+  </p>
+  <%= link_to 'Edit', edit_fias_report_path(@fias_report) %> |
+  <%= link_to 'Back', fias_reports_path %>
+</div>

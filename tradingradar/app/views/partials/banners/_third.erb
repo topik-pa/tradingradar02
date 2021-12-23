@@ -1,0 +1,104 @@
+<div class="cell-xs-6 cell-sm-6 cell-lg-12 third">
+  <!-- HP case: one stock only -->
+  <% if @tradingMarket != nil %>
+    <div class="swiper-slide">
+      <div class="swiper-slide-caption">
+        <% if @tradingMarket['bestOfTheDay']['stock'].present? %>
+          <div class="post-type-1">
+            <img src="<%= $imagePath + 'banners/' + @thirdBannerImage[:filename] %>" width="450" height="330" alt="<%= $imagePath + 'banners/' + @thirdBannerImage[:description] %>">
+            <ul class="tag-list">
+              <li>
+                <%= link_to(@tradingMarket['country'], {:controller => "market", :action => @tradingMarket['country']}) %>
+              </li>
+            </ul>
+            <div class="caption">
+              <h4 class="title"><%= t('layouts.application.bestTitle') %></h4>
+              <h3>
+                <%= link_to @tradingMarket['bestOfTheDay']['stock'].to_hash[0]['name'], {:controller => "stock", :action => "index", :id => @tradingMarket['bestOfTheDay']['stock'].to_hash[0]['name'].parameterize, :isin => @tradingMarket['bestOfTheDay']['stock'].to_hash[0]['isin']} %>
+              </h3>
+              <div>
+                <% @tradingMarket['bestOfTheDay']['parameters'].each do |param| %>
+                  <p>
+                    <%= param['label'] %>: <strong><%= @tradingMarket['bestOfTheDay']['stock'].to_hash[0][param['parameter']] %></strong><% if param['against'] %>/<%= param['against'] %><%end%>
+                  </p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% else  %>
+          <div class="post-type-1"><img src="<%= $imagePath + 'banners/' + @thirdBannerImage[:filename] %>" width="450" height="330" alt="<%= $imagePath + 'banners/' + @thirdBannerImage[:description] %>">
+            <ul class="tag-list">
+              <li>
+                <%= link_to(@tradingMarket['country'], {:controller => "market", :action => @tradingMarket['country']}) %>
+              </li>
+            </ul>
+            <div class="caption">
+              <h4 class="title"><%= t('layouts.application.bestTitle') %></h4>
+              <div>
+                <p>
+                  <%= t('layouts.application.noDataYet') %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end  %>
+      </div>
+    </div>
+  <% else %>
+    <!-- SHP case: more stocks -->
+    <div class="swiper-container swiper-slider swiper-slider-type-1" data-loop="false" data-simulate-touch="false" data-swiper-autoplay="3000">
+      <div class="swiper-wrapper">
+        <% $tradingMarkets.each do |market| %>
+          <div class="swiper-slide">
+            <div class="swiper-slide-caption">
+              <% if market['bestOfTheDay']['stock'].present? %>
+                <div class="post-type-1">
+                  <img src="<%= $imagePath + 'banners/' + @thirdBannerImage[:filename] %>" width="450" height="330" alt="<%= $imagePath + 'banners/' + @thirdBannerImage[:description] %>">
+                  <ul class="tag-list">
+                    <li>
+                      <%= link_to(market['country'], {:controller => "market", :action => market['country']}) %>
+                    </li>
+                  </ul>
+                  <div class="caption">
+                    <h4 class="title"><%= t('layouts.application.bestTitle') %></h4>
+                    <h3>
+                      <%= link_to market['bestOfTheDay']['stock'].to_hash[0]['name'], {:controller => "stock", :action => "index", :id => market['bestOfTheDay']['stock'].to_hash[0]['name'].parameterize, :isin => market['bestOfTheDay']['stock'].to_hash[0]['isin']} %>
+                    </h3>
+                    <div>
+                      <% market['bestOfTheDay']['parameters'].each do |param| %>
+                        <p>
+                          <%= param['label'] %>: <strong><%= market['bestOfTheDay']['stock'].to_hash[0][param['parameter']] %></strong><% if param['against'] %>/<%= param['against'] %><%end%>
+                        </p>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% else  %>
+                <div class="post-type-1"><img src="<%= $imagePath + 'banners/' + @thirdBannerImage[:filename] %>" width="450" height="330" alt="<%= $imagePath + 'banners/' + @thirdBannerImage[:description] %>">
+                  <ul class="tag-list">
+                    <li>
+                      <%= link_to(market['country'], {:controller => "market", :action => market['country']}) %>
+                    </li>
+                  </ul>
+                  <div class="caption">
+                    <h4 class="title"><%= t('layouts.application.bestTitle') %></h4>
+                    <div>
+                      <p>
+                        <%= t('layouts.application.noDataYet') %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <% end  %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <!-- Swiper Pagination-->
+      <div class="swiper-pagination"></div>
+      <!-- Swiper Navigation-->
+      <div class="swiper-button-prev fa-arrow-left"></div>
+      <div class="swiper-button-next fa-arrow-right"></div>
+    <% end %>
+  </div>
+</div>

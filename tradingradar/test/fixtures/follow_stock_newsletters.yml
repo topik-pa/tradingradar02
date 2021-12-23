@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stock: MyString
+  isin: MyString
+  email: MyString
+  active: false
+  privacy: false
+  referrer: MyString
+
+two:
+  stock: MyString
+  isin: MyString
+  email: MyString
+  active: false
+  privacy: false
+  referrer: MyString

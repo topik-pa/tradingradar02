@@ -1,0 +1,87 @@
+<%= form_with(model: source_france, local: true) do |form| %>
+  <% if source_france.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(source_france.errors.count, "error") %> prohibited this source_france from being saved:</h2>
+
+      <ul>
+      <% source_france.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :isin %>
+    <%= form.text_field :isin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_0 %>
+    <%= form.text_field :url_0 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_1 %>
+    <%= form.text_field :url_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_2 %>
+    <%= form.text_field :url_2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_3 %>
+    <%= form.text_field :url_3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_4 %>
+    <%= form.text_field :url_4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_5 %>
+    <%= form.text_field :url_5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_6 %>
+    <%= form.text_field :url_6 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_7 %>
+    <%= form.text_field :url_7 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_8 %>
+    <%= form.text_field :url_8 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_9 %>
+    <%= form.text_field :url_9 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_10 %>
+    <%= form.text_field :url_10 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_11 %>
+    <%= form.text_field :url_11 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

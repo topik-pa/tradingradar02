@@ -1,0 +1,1 @@
+json.partial! "market_suggestions_newsletters/market_suggestions_newsletter", market_suggestions_newsletter: @market_suggestions_newsletter

@@ -1,0 +1,40 @@
+<!-- RD Navbar Panel-->
+<div class="rd-navbar-panel">
+  <!-- RD Navbar Toggle-->
+  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap">
+    <span></span>
+  </button>
+  <%= render("partials/header/logo") %>
+  <div class="rd-navbar-collapse-toggle" data-rd-navbar-toggle=".rd-navbar-collapse">
+    <span></span>
+  </div>
+  <div class="rd-navbar-top-panel rd-navbar-collapse">
+    <div class="rd-navbar-top-panel-inner">
+      <ul class="contact-list">
+        <li class="language">
+          <%= link_to t('languages.english'), { :locale=>'en' } %>
+        </li>
+        <li class="language">
+          <%= link_to t('languages.italian'), { :locale=>'it' } %>
+        </li>
+        <br/>
+        <br/>
+        <li>
+          <%= link_to(t('layouts.application.subscribe'), {:anchor => "modalSubscription"}, :data => {:toggle => "modal"}) %>
+        </li>
+        <li>
+          <%= link_to(t('layouts.application.contacts'), {:controller => "pages", :action => "contacts"}) %>
+        </li>
+        <% if current_user == nil %>
+          <li>
+            <%= link_to(t('layouts.application.loginRegister'), {:anchor => "modalLogin"}, :data => {:toggle => "modal"}) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to t('layouts.application.logout'), logout_url, :method => :delete  %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

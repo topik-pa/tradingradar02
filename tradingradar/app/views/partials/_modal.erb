@@ -1,0 +1,93 @@
+<!-- Modal-->
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			
+			<h5 class="modal-title" id="myModalLabel"><%= t('layouts.application.login')%></h5>
+
+			<!--FB button -->
+			<% unless current_follower %>
+				<%= link_to follower_facebook_omniauth_authorize_path, class: "button button-block button-steel-blue button-icon button-icon-left" do %>
+					<span class="icon fa fa-facebook icon-sm"></span><span class="button-text">Facebook</span>
+				<% end %>
+			<% else %>
+				<%= current_follower[:name] %>
+				<%= link_to t('layouts.application.logout'), destroy_follower_session_path, method: :delete %>
+			<% end %>			
+
+			<p class="text-center">
+				or
+			</p>
+			
+			<!-- Standard session form -->
+			<%= form_for :session, url: login_path, html: { class: "rd-mailform text-center" } do |f| %>
+				<div class="form-wrap form-wrap-validation">
+					<%= label(:session, :email, class: "form-label") do
+	          			'<span class="icon mdi-account mdi"></span>'.html_safe
+	        		end %>
+					<%= text_field(:session, :email, class: "form-input", placeholder: t('layouts.application.email'), data: {constraints: '@Required'}) %>
+				</div>
+				<div class="form-wrap form-wrap-validation">
+					<%= label(:session, :password, class: "form-label") do
+	          			'<span class="icon mdi-lock mdi"></span>'.html_safe
+	        		end %>
+					<%= text_field(:session, :password, class: "form-input", placeholder: t('layouts.application.password'), data: {constraints: '@Required'}) %>
+				</div>
+				<div class="form-wrap form-footer">
+					<%= f.submit t('layouts.application.login'), class: "button button-primary button-square" %>
+				</div>
+			<% end %>
+			<p>
+				<%= t('layouts.application.notRegisteredYetQuestion_html', href: link_to(t("layouts.application.registrationLink_html"), signup_path)) %>
+			</p>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="modalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			
+			<h5 class="modal-title" id="myModalLabel"><%= t('layouts.application.subscribe')%></h5>
+			
+			<%= render("partials/newsletters/form-follow-stock-newsletter") %>	
+			<p class="text-center">
+				or
+			</p>			
+			<%= render("partials/newsletters/form-market-suggestions-newsletter") %>					
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="modal fade" id="modalPrivacy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			
+			<div>
+				<h6>Questo sito web utilizza i cookie</h6>
+				<p>
+					Questo sito o gli strumenti di terze parti in esso integrati fanno uso di cookie necessari per il funzionamento e per il raggiungimento delle finalità descritte nella cookie policy. Per saperne di più o per revocare il consenso relativamente a uno o tutti i cookie, fai riferimento alla cookie policy.
+					Dichiari di accettare l’utilizzo di cookie chiudendo o nascondendo questo banner, cliccando un link o un pulsante o continuando a navigare in altro modo.
+					Per ulteriori informazioni è possibile visitare la pagina <a href="#">privacy policy</a>
+					<br/>
+					
+				</p>
+				<a class="button button-xs button-primary" id="accept-cookie-policy" href="#">Accetta</a>
+	
+			</div>					
+		</div>
+	</div>
+</div>

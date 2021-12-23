@@ -1,0 +1,51 @@
+<div class="cell-xs-6 cell-sm-6 cell-lg-12 second">
+  <div class="post-type-1">
+    <img src="<%= $imagePath + 'banners/' + @secondBannerImage[:filename] %>" width="450" height="330" alt="<%= @secondBannerImage[:description] %>">
+    <% if @lastAnalysis %>
+      <ul class="tag-list">
+        <li>
+          <%= link_to(@lastAnalysis.market, {:controller => "market", :action => @lastAnalysis.market}) %>
+        </li>
+        <li>
+          <%= link_to @lastAnalysis.author, {:controller => "analyses", :action => "index", :query => @lastAnalysis.author} %>
+        </li>
+        <li>
+          <%= link_to @lastAnalysis.stock, {:controller => "stock", :action => "index", :id => @lastAnalysis.stock.parameterize, :isin => @lastAnalysis.isin} %>
+        </li>
+      </ul>
+      <div class="caption">
+        <h4 class="title">
+          <%= link_to(analysis_path(@lastAnalysis)) do %>
+            <%= @lastAnalysis.stock %>: <br/>
+            <%= @lastAnalysis.title %>
+          <% end %>
+        </h4>
+        <div class="body">
+          <%= truncate_html @lastAnalysis.body, :length => 160, :omission => "..." %>
+        </div>
+        <div class="bottom-block">
+          <ul class="meta-list">
+            <li>
+              by <%= link_to @lastAnalysis.author, controller: "analyses", action: "index", query: @lastAnalysis.author %>
+            </li>
+            <li>
+              <time datetime="<%= @lastAnalysisTime %>">
+                <%= @lastAnalysisTimeSimple %>
+              </time>
+            </li>
+          </ul>
+          <!--TODO: make it shareable-->
+          <!--<div class="share-block">
+					<div class="soc-icon">
+						<a class="icon fa-twitter" href="#"></a><a class="icon fa-facebook-square" href="#"></a><a class="icon fa-instagram" href="#"></a><a class="icon fa-pinterest" href="#"></a><a class="icon fa-youtube-play" href="#"></a>
+					</div><span class="icon fa-share-alt"></span>
+				</div>-->
+        </div>
+      </div>
+    <% else %>
+      <div class="caption">
+        <h4 class="title"><%= t('layouts.application.noAnalysisYet') %></h4>
+      </div>
+    <% end %>
+  </div>
+</div>

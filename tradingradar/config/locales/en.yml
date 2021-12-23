@@ -1,0 +1,232 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  application: 
+    name: 'tradingradar.net'
+    appDescription: 'tradingradar.net scouts the Web for News, Analyses and Alerts about the main International Stocks.'
+    keywords: 'trading, stocl, finance, bourse, online, ratings, signals, buy, sell'
+    mission: 'All the main Stock analyses... in one place!'
+    mission2: 'All the Alerts from the main Market Stocks'
+    mission3: 'Ping the next bull Stock!'
+    author: 'Marco Pavan'
+    adminEmail: 'admin@tradingradar.net'
+    infoEmail: 'info@tradingradar.net'
+
+  banners: 
+    shpBanner1-it: 'Palazzo Mezzanotte - Italian Trading Stock Exchange'
+    shpBanner1-fr: 'Palais Brongniart - France Trading Stock Exchange'
+    hpBanner1-it: 'Palazzo Mezzanotte - Italian Trading Stock Exchange - day'
+    hpBanner2-it: 'Palazzo Mezzanotte - Italian Trading Stock Exchange - night'
+    hpBanner1-fr: 'Palais Brongniart - France Trading Stock Exchange - day'
+    hpBanner2-fr: 'Palais Brongniart - France Trading Stock Exchange - night'
+
+  markets:
+    italy: 'Italy FTSE MIB'
+    france: 'France CAC40'
+
+  languages:
+    english: 'English'
+    italian: 'Italian'
+
+  media:
+    ilSole24ore: 'Il Sole 24 Ore'
+    milanoFinanza: 'Milano Finanza'
+    borsaItaliana: 'Borsa Italiana'
+    teleBorsa: 'Teleborsa'
+    leFigaro: 'Le Figaro'
+    borseFortuneo: 'Borse Fortuneo'
+    tradingSat: 'Trading Sat'
+    zoneBourse: 'Zone Bourse'
+    abcBourse: 'ABC Bourse'
+
+  socials:
+    facebook: 'https://www.facebook.com/tradingradar'
+    twitter: 'https://twitter.com/TradingradarN'
+
+  activerecord:
+    errors:
+      generic: ''
+    confirm:
+      models:
+        follow_stock_newsletter: 
+          created: 'Follow Stock newsletter was successfully created.'
+        market_suggestion_newsletter: 
+          created: 'Follow Markets newsletter was successfully created.' 
+
+  server_error_occurred_mailer:
+    generic:
+      subject: 'tradingradar.net: server error'
+      greeting: 'Hi %{username},'   
+      body: 'an error occurred on server, right now. The error type is the following:'  
+  newsletter_mailer:
+    market:
+      subject: 'Markets newsletter from tradingradar.net'
+    stock:
+      subject: '%{stockname} - newsletter from tradingradar.net'
+
+  contacts:
+      messageSent: 'Thank you! Your message was sent correctly.'   
+      messageError: 'Something was wrong: mail not sent. Have you filled all fields?' 
+
+  layouts:
+    application:
+      marketFlag: 'market flag'
+      logoDescription: 'Trading Radar logo'
+
+      contacts: 'Contacts'
+      home: 'Home'
+      stockAnalysis: 'Stocks analysis'
+      about_html: 'About'
+      loginRegister: 'Sign in / Register'
+      logout: 'Log out'
+      login: 'Login'
+      ctaSearch: 'I`m looking for...'
+
+      email: 'Email'
+      password: 'Password'  
+      
+      notRegisteredYetQuestion_html: 'Not registered yet?<br/>Go to the %{href}!'
+      registrationLink_html: ' Registration form'
+
+      subscribe: 'Subscribe now the Newsletters!'
+      followTheStock: 'Follow the Stock!'
+      followTheMarket: 'Follow the Market!'
+      followTheStock_cta: 'Follow the Stock'
+      followTheMarket_cta: 'Follow the Market'
+      getInfoFromStock: 'Get market signals for the selected stock directly in your mail.'
+      getInfoFromMarkets: 'Get all information from all Markets in your email'
+      selectStock: 'Select your stock'
+      yourMail: 'Type your email'
+      privacy_message_html: 'I have read and agree with the Terms of use and %{href} statements for this website.'
+      privacy_html: 'Privacy policy'
+      subscribeBtn: 'Subscribe'
+      gainInfoAboutStock: 'Every day the last news and analyses about your Stock directly in your email.'
+      gainInfoAboutMarket: 'Every day the last news and analyses about the Markets directly in your email.'
+      followUs: 'Follow us on: '
+      yourName: 'Your name'
+      yourEmail: 'Your email'
+      yourComment: 'Message'
+      send: 'Send'
+
+      italybest4: 'Italy best 4'
+      francebest4: 'France best 4'
+
+      bestTitle: 'Title of the day: '
+      noDataYet: 'No data yet'
+      noAnalysisYet: 'No analysis yet'    
+      
+      marketsTitle: 'Markets'
+      marketsubTitle: 'The current markets graphical status'
+      best4Title: 'Best Stocks'      
+      best4Subtitle: 'For every media, the best four stocks based on their evaluation'
+      lastsBlogPostTitle: 'Last blog posts'
+
+      categories: 'Categories'
+      ourAnalyses: 'Our analyses'
+      information: 'Information'   
+      
+      sendSuggestionTitle: 'Thougts or suggestions?'
+      sendSuggestionBody: 'Write here what do you think (leave an email, if you want a reply)'
+      sendSuggestionWriteHere: 'Write here...'
+      sendSuggestionSend: 'Send'
+      
+      name: 'Name'
+      sector: 'Sector'
+      variation: 'Variation'
+      perf1: 'Last 1 mounth'
+      perf6: 'Lasts 6 mounths'
+      perf12: 'Lasts 12 mounths'
+      support: 'Support'
+      resistance: 'Resistance'
+      strategy: 'Strategy'
+      mediumTrend: 'Medium trend'
+      shortTrend: 'Short trend'
+      longTrend: 'Long trend'
+      risk: 'Risk'
+      rating: 'Rating'
+      relativeStrenght: 'Relative strenght'
+      target: 'Target' 
+      market: 'Market'
+      contacts: 'Contacts'
+      performance: 'Performance'
+      isin: 'ISIN'
+      reuters: 'Reuters'
+      site: 'Site'
+      address: 'Address'
+      phone: 'Phone'
+      profile: 'Company profile'    
+      dividend: 'Dividend'
+      dividendDate: 'Dividend date'
+      dividendYeld: 'Dividend yeld'
+      lastPrice: 'Last price'
+      marketPhase: 'Market phase'
+      source: 'Source data: ' 
+      fta: 'FTA'
+      rsi: 'RSI'
+      volatility: 'volatility'
+      rsidiv: 'RSI divergence'
+      strategy: 'Strategy'
+      consensus: 'Consensus'
+      tendency: 'Tendency'
+
+      stockList: 'Stock list'
+      pressReleaseTitle: 'Press Release'
+      pressReleaseSubtitle: 'Analises, target price and more from the main online Media'
+      readMore: 'Read more >'
+      originalSource: 'Go to the original source'
+      lastSixAnalyses: 'Last six analyses'
+      allAnalyses: 'All analyses'
+      analysisBy: 'Analysis by '
+      writtenBy: 'Written by '
+      marcoDescription: 'I am a professional blogger interested in everything taking place in cyberspace. I am running this website and try my best to make it a better place to visit.'
+      prevPost: 'Previous Post'
+      nextPost: 'Next Post' 
+    contactsPage:
+      title: 'Contacts'
+      subtitle: 'Please use the form below to send us your inquiry'
+      personalContact: 'Personal contact: '
+      generalInfos: 'General infos: '
+      notabene: 'Your email address will not be published. All fields are required.'
+    aboutPage: 
+      title: 'About us'
+      subtitle: 'Thecnical analysis, news, trading signals from Internationals Markets'
+      body_html: '<h2>Cosa?</h2><p>Ogni ora Trading Radar scandaglia il Web alla ricerca di informazioni circa la situazione tecnica dei titoli azioniari della <strong>Borsa di Milano</strong>.</p><p>Attraverso questi dati è possibile ricostruire una <strong>analisi aggiornata</strong> di ogni titolo ed elaborare dei filtri che elencano le <strong>azioni di borsa più interessanti</strong> in quel dato momento. <br>Per ogni titolo, inoltre, è disponibile una <strong>rassegna stampa</strong> in tempo reale che darà una più completa panoramica anche dal pun1'
+    searchPage:
+      title: 'Search results'
+      subtitle: 'Stocks'
+      subtitle2: 'Posts'
+      noResults: 'No results found'
+    messagePage:
+      somethingWrong: 'Something was wrong, please contact the admin'
+      emailResetOK: 'Ok... your newsletter counter was resetted to 5! Thank you for your interest!'
+    

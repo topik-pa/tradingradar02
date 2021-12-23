@@ -1,0 +1,9 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <% provide(:page_title, "Edit #{@analysis.title}") %>
+  <h1>Editing Analysis</h1>
+  <%= render 'form', analysis: @analysis %>
+  <%= link_to 'Show', @analysis %> |
+  <%= link_to 'Back', analyses_path %>
+</div>

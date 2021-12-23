@@ -1,0 +1,27 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Isin:</strong>
+    <%= @dax30_report.isin %>
+  </p>
+  <p>
+    <strong>Stock:</strong>
+    <%= @dax30_report.stock %>
+  </p>
+  <p>
+    <strong>Finanzen rating:</strong>
+    <%= @dax30_report.finanzen_rating %>
+  </p>
+  <p>
+    <strong>Finanzen ratingmoodys:</strong>
+    <%= @dax30_report.finanzen_ratingmoodys %>
+  </p>
+  <p>
+    <strong>Finanzen sentiment:</strong>
+    <%= @dax30_report.finanzen_sentiment %>
+  </p>
+  <%= link_to 'Edit', edit_dax30_report_path(@dax30_report) %> |
+  <%= link_to 'Back', dax30_reports_path %>
+</div>

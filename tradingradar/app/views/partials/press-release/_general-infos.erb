@@ -1,0 +1,48 @@
+<section class="section-sm bg-gray">
+  <div class="shell">
+    <div class="range">
+      <div class="cell-xs-12">
+        <h3><%= t('layouts.application.generalInformation') %></h3>
+        <p>
+          <%= t('layouts.application.source') %>
+          <%= link_to @stockMediaData['sourceCompanyInfos'], @stockMediaData['urlCompanyInfos'], target: "_blank", rel: "alternate" %>
+        </p>
+      </div>
+    </div>
+    <div class="range range-center range-40 text-left">
+      <div class="cell-sm-6 cell-md-4">
+        <div class="unit unit-xs-horizontal unit-xs-top unit-landing">
+          <div class="unit__left"><span class="icon fl-chapps-tag43 icon-primary icon-lg"></span></div>
+          <div class="unit__body">
+            <h4><%= t('layouts.application.market') %></h4>
+            <p><strong><%= t('layouts.application.sector') + ': ' %></strong> <span><%= @stock.sector %></span></p>
+            <p><strong><%= t('layouts.application.isin') + ': ' %></strong> <span><%= @stock.isin %></span></p>
+            <p><strong><%= t('layouts.application.reuters') + ': ' %></strong> <span><%= @stock.reuters %></span></p>
+          </div>
+        </div>
+      </div>
+      <div class="cell-sm-6 cell-md-4">
+        <div class="unit unit-xs-horizontal unit-xs-top unit-landing">
+          <div class="unit__left"><span class="icon fl-chapps-contacts9 icon-primary icon-lg"></span></div>
+          <div class="unit__body">
+            <h4><%= t('layouts.application.contacts') %></h4>
+            <p><strong><%= t('layouts.application.site') + ': ' %></strong> <span><%= @stock.corporate_url %></span></p>
+            <p><strong><%= t('layouts.application.address') + ': ' %></strong> <span><%= @stock.address %></span></p>
+            <p><strong><%= t('layouts.application.phone') + ': ' %></strong> <span><%= @stock.phone %></span></p>
+          </div>
+        </div>
+      </div>
+      <div class="cell-sm-6 cell-md-4">
+        <div class="unit unit-xs-horizontal unit-xs-top unit-landing">
+          <div class="unit__left"><span class="icon fl-chapps-image69 icon-primary icon-lg"></span></div>
+          <div class="unit__body">
+            <h4><%= t('layouts.application.performance') %></h4>
+            <p><strong><%= t('layouts.application.perf1') + ': ' %></strong> <span class="<%= addZSignClass(@stock.performance1) %>"><%= @stock.performance1 %><%= '%' %></span></p>
+            <p><strong><%= t('layouts.application.perf6') + ': ' %></strong> <span class="<%= addZSignClass(@stock.performance6) %>"><%= @stock.performance6 %><%= '%' %></span></p>
+            <p><strong><%= t('layouts.application.perf12') + ': ' %></strong> <span class="<%= addZSignClass(@stock.performance12) %>"><%= @stock.performance12 %><%= '%' %></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

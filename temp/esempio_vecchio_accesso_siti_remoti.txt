@@ -1,0 +1,424 @@
+class ApplicationController < ActionController::Base
+  #before_action :add_www_subdomain
+  before_action :set_i18n_locale_from_params
+  
+  require 'rufus-scheduler'
+  require 'open-uri'
+  require 'rubygems'
+  require 'nokogiri'
+  require 'uri'
+  require "net/http"
+  
+  $appName = 'Trading Radar'
+  $appVersion = '2.0'
+  $appDescription = $appName + ' scandaglia il Web alla ricerca di notizie, analisi e segnali operativi sui titoli azionari delle principali Borse internazionali.'
+  $mission = 'Le analisi sui principali titoli azionari... in un click!'
+  $missionBis = 'Tutti i segnali dei mercati azionari'
+  $adminEmail = 'admin@tradingradar.net'
+  $author = 'Marco Pavan'
+  $authorMail = 'marco@tradingradar.net'
+  $lastUpdate = Time.zone.at(0)
+  $maxRetryToGetUrl = 2
+  $sleepTime = 3
+  
+  $ligthStocks = Stock.select("name, isin").order(:name)
+  
+  
+  $stockOfTheDayQueryTime = nil
+  $stockOfTheDay = nil
+  
+  #helper_method :current_user   
+  
+  scheduler = Rufus::Scheduler.new
+
+  puts 'Starting application: ' + $appName + '. Version: ' + $appVersion
+ 
+  class ElemNotFound < StandardError
+  end
+  
+  class UnexpectedElemValue < StandardError
+  end 
+  
+  
+
+  #Session related stuff
+  helper_method :current_user 
+  def current_user 
+    @current_user ||= User.find(session[:user_id]) if session[:user_id] 
+  end
+  
+  def require_user 
+    redirect_to '/login' unless current_user 
+  end
+  
+  #Update DB tables
+  def self.updateDBTables
+    sources = Source.order(:name) #TODO order first by country and then by name
+    #For every source 
+    sources.find_each do |source|
+      retries = $maxRetryToGetUrl
+      begin
+        updateFromSource(source)
+        rescue ElemNotFound => e
+          puts 'Error element not found:' + e.message
+          ServerErrorOccurredMailer.generic(e.message).deliver_now
+        rescue UnexpectedElemValue => e  #TODO: mantain this error catch?
+          puts 'Error Unexpected element value:' + e.message
+        #rescue TypeError => e #TODO: mantain this error catch?
+        #  puts 'TypeError:' + e.message
+        rescue RuntimeError => e 
+          puts 'RuntimeError:' + e.message
+          ServerErrorOccurredMailer.generic(e.message).deliver_now
+        rescue JSON::ParserError => e
+          puts 'JSON Parse Error' + e.message
+          ServerErrorOccurredMailer.generic(e.message).deliver_now
+        rescue OpenURI::HTTPError => e
+          puts 'HTTP error:' + e.message
+          if retries > 0
+            puts "\tTrying #{retries} more times"
+            retries -= 1
+            sleep $sleepTime
+            retry
+          else
+            puts "\t\tCan't get any data from this URL, so moving on..."
+            ServerErrorOccurredMailer.generic(e.message).deliver_now
+          end
+      end
+      puts source.name + ' updated'      
+    end
+    puts 'All sources updated'
+  end
+  
+  #source is a row in the Sources DB table
+  def self.updateFromSource(source)  
+    require_relative 'jsonUrls'
+    #urls is a full valid array of json each of them containd the source url and the xpath (and other infos...)  
+    urls = getJsonSources(source)
+    isin = source.isin
+    
+    #there are 2 tables to update: the Stock and the report (market specific table)
+    report = nil
+    stock = Stock.where(isin: isin).first #first... to get a stock and not a collection
+    
+    #if there is not such stock... I create it
+    if !stock
+      stock = Stock.new(:isin => isin)
+    end
+    
+    #for each source url (and related infos)
+    urls.each do |obj|
+      
+      if obj[:valid] && obj[:url] =~ URI::regexp
+        #I am updating a specific stock from 1 or more url sources (the object)
+        puts 'Updating stock ' + source.name + '-' + isin + ' from ' + obj[:url] + ' (index: ' + obj[:id].to_s + ').'       
+
+        #I select the right table destination depending on the market/country
+        #if there is not such a row, I create it
+        case obj[:country]
+          when 'it'
+            report = FiasReport.where(isin: isin).first
+            if !report
+              report = FiasReport.new(:isin => isin)
+            end
+          when 'fr'
+            report = Cac40Report.where(isin: isin).first
+            if !report
+              report = Cac40Report.new(:isin => isin)
+            end
+          #when 'de'
+          #  report = Dax30Report.where(isin: isin).first
+          #  if !report
+          #    report = Dax30Report.new(:isin => isin)
+          #  end
+          else
+            #Do nothing
+        end 
+            
+            
+        ###      
+        #doc = open(obj[:url])
+        #byebug
+        #url = URI.parse(obj[:url])
+        #req = Net::HTTP::Get.new(url.path)
+        #req.add_field("Accept", "*/*")
+        ##req.add_field("Accept-Encoding", "gzip, deflate, br")
+        #req.add_field("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36")
+        #req.add_field("Host", "bourse.fortuneo.fr")        
+        
+        #res = Net::HTTP.new(url.host, url.port).start do |http|
+        #  http.request(req)
+        #end
+        
+        
+        #uri = URI.parse("https://bourse.fortuneo.fr/api/value/trends/ACTIONS/FTN000023FR0000120321")
+        #http = Net::HTTP.new(uri.host, uri.port)
+        #http.use_ssl = true
+        
+        #res = http.get(uri.request_uri)
+        
+        
+        #byebug
+        uri = URI.parse(obj[:url])
+        http = Net::HTTP.new(uri.host, uri.port)
+        
+        if obj[:url].include? "https://"
+          http.use_ssl = true
+        end
+        
+        resp = http.get(uri.request_uri)
+        
+        
+        
+        #puts 'TEST 2' + resp
+        
+        
+        #resp = Net::HTTP.get_response(URI.parse(obj[:url]))
+        
+        #data = JSON.parse(resp.body)
+        
+        if(obj[:response] == 'json')
+          json = JSON.parse(resp.body)
+          obj[:values].each do |frag|   
+            #the table can be the Stock or the market specific one 
+            table = frag[:table]
+            
+            #
+            if frag[:xpath].kind_of?(Array)
+              jsonValue = nil
+              clonedJson = json
+              frag[:xpath].each {|x|                          
+                jsonValue = clonedJson[x]
+                clonedJson = clonedJson[x]
+              } 
+            else 
+              jsonValue = json[frag[:xpath]]  
+            end  
+            
+            jsonValue = jsonValue.to_s         
+            
+            #jsonValue = json[frag[:xpath]]             
+            #value = jsonValue.text #TODO: inutile?
+            #update the value in the correct table row
+            case table
+              when 'stock' 
+                update(frag, jsonValue, stock)  
+              else
+                update(frag, jsonValue, report) 
+            end       
+          end
+        else
+          # retrive remote data
+          xml = Nokogiri::HTML(resp.body) 
+          #frag is the specific piece of data infos (column, path, table)             
+          obj[:values].each do |frag|   
+            #the table can be the Stock or the market specific one 
+            table = frag[:table]
+            xmlValue = xml.at_xpath(frag[:xpath]).to_s.strip #TODO: check .to_s.strip   
+            value = Nokogiri::HTML(xmlValue).text
+            #update the value in the correct table row
+            case table
+              when 'stock' 
+                update(frag, value, stock)  
+              else
+                update(frag, value, report) 
+            end       
+          end
+        end
+        ###
+                
+        report.save!
+        report.reload
+        stock.save!
+        stock.reload
+            
+      end   
+    end     
+  end
+  #Update DB tables
+  
+  
+  #Update the current field
+  def self.update(frag, val, tab)
+    #puts 'VALUE: ' + val
+    if val != nil and !val.empty?
+      if frag[:commaBasedNum]
+        val = val.tr(",", ".")
+      end
+      if frag[:removeSpecialChars]
+        val = val.delete("^\u{0000}-\u{007F}").gsub(/[!@%€&"]/,'')
+      end
+      if frag[:specialOps1]
+        val = (val.to_f*100).round(2)
+        val = val.to_s
+      end
+      val = val.strip
+      #write on the DB table
+      tab[frag[:name]] = val      
+      puts '*' + frag[:name] + '*' + ' updated as *' + val + '* in ' + frag[:table] + ' table.'
+    else 
+      tab[frag[:name]] = nil
+      tab.save!
+      raise ElemNotFound, '*' + frag[:name] + '*' + ' is null'
+      #puts 'ERROR ' + '*' + frag[:name] + '*' + ' is null' 
+    end  
+  end
+  #Update the current field
+  
+  
+  
+  #Send Follow stock newsletter
+  def self.sendFollowStockNewsletter
+    newsletters = FollowStockNewsletter.all #TODO: select unique values
+    newsletters.find_each do |nl|
+      if nl.active
+        @stock = Stock.find_by isin: nl.isin
+        @report = FiasReport.find_by isin: nl.isin #TODO: extend to permit foreing markets 
+        @mail = nl.email
+        @urls = Url.find_by isin: nl.isin
+        #TODO: send mail
+        #TitleNewsletterMailer.newsletter(@stock, @mail, @analysis, row.id, @urls).deliver_now
+      end        
+    end
+  end
+  #Send Follow stock newsletter
+  
+  
+  
+  #Find stock of the day
+  def self.findStockOfTheDay
+    #stockJoinAnalysis = Stock.select("stocks.*, analyses.*").joins(:analysis)
+    best5Stocks = ActiveRecord::Base.connection.exec_query('SELECT * FROM Stocks JOIN Fias_Reports ON Stocks.isin=Fias_Reports.isin WHERE borsaitaliana_fta = 4 ORDER BY RANDOM() LIMIT 5')
+    #stock = stockJoinAnalysis.select("name, cod").where("borsa_italiana_fta = ? AND xxivore_ftaindex > ? AND xxivore_rsi > ?", "4", 60, 80).first
+    #stockOfTheDay = joinStockReport.select("*").where("borsa_italiana_fta = ? AND sole24ore_fta > ? AND sole24ore_rsi > ?", "4", 60, 80).first
+    #if stock == nil
+    #  stock = stockJoinAnalysis.select("name, cod").where("xxivore_rsidiv = ? AND milano_finanza_risk <= ? AND milano_finanza_rating like ? OR milano_finanza_rating like ?", "Bullish", 20, "%B%", "%A%").first
+    #end  
+    #if stock == nil
+    #  stock = stockJoinAnalysis.select("name, cod").where("xxivore_shorttrend = ? AND investing_dotcomrating = ? AND borsa_italiana_fta = ? AND xxivore_ftaindex > ? AND xxivore_rsi > ?", "molto rialzista", true, "3", 50, 70).first
+    #end
+    
+    if stock != nil 
+      $stockOfTheDay =  best5Stocks.first
+      $stockOfTheDayQueryTime = Time.zone.now
+    end    
+  end
+  #Find stock of the day
+  
+  
+  #PRODUCTION
+  if Rails.env.production?
+    
+    scheduler.cron '00 06 * * 1-5', :blocking => true do
+    end
+    
+    scheduler.cron '00 07 * * 1-5', :blocking => true do
+    end
+    
+    scheduler.cron '00 08 * * 1-5', :blocking => true do
+    end
+    
+    scheduler.cron '00 09 * * 1-5', :blocking => true do
+    end 
+    
+    scheduler.cron '20 09 * * 1-5', :blocking => true do
+    end
+    
+    scheduler.cron '00 10 * * 1-5', :blocking => true do
+    end
+    
+    scheduler.cron '00 11 * * 1-5', :blocking => true do
+    end
+        
+    scheduler.cron '00 12 * * 1-5', :blocking => true do
+    end
+    
+    scheduler.cron '00 13 * * 1-5', :blocking => true do
+    end
+    
+    scheduler.cron '00 14 * * 1-5', :blocking => true do
+    end
+        
+    scheduler.cron '00 15 * * 1-5', :blocking => true do
+    end
+    
+    scheduler.cron '30 15 * * 1-5', :blocking => true do
+    end
+    
+    scheduler.cron '00 16 * * 1-5', :blocking => true do
+    end
+    
+    scheduler.cron '00 17 * * 1-5', :blocking => true do
+    end
+    
+    scheduler.cron '00 18 * * 1-5', :blocking => true do
+    end
+    
+    scheduler.cron '30 18 * * 1-5', :blocking => true do
+    end
+    
+    scheduler.cron '00 19 * * 1-5', :blocking => true do
+    end
+      
+    scheduler.cron '00 08 * * 6-7', :blocking => true do     
+    end
+
+    scheduler.every '20m' do
+    end
+    
+    scheduler.in '5s' do
+    end
+        
+
+  #DEVELOPMENT
+  else
+    #scheduler.every '30h', :first => :now do
+    scheduler.in '3s' do 
+    #scheduler.every '30s' do  
+      updateDBTables
+      #ServerErrorOccurredMailer.generic.deliver_now
+    end
+   
+  end
+  
+  
+  protected
+  def set_i18n_locale_from_params
+    if params[:locale]
+      if I18n.available_locales.map(&:to_s).include?(params[:locale])
+        I18n.locale = params[:locale]
+      else
+        flash.now[:notice] = "#{params[:locale]} translation not available"
+        logger.error flash.now[:notice]
+      end
+    end
+  end
+  
+  def default_url_options
+    {locale: I18n.locale}
+  end
+  
+  
+  private
+  #Add 'www.' on url
+  def add_www_subdomain
+    unless /^www/.match(request.host) or /herokuapp/.match(request.host)
+      redirect_to("#{request.protocol}www.#{request.host_with_port}",status: 301)
+    end
+  end
+  
+  #Restart server
+  def self.restartServer
+    puts 'Server restarting in 3 min...'
+    restart = Rufus::Scheduler.new
+    restart.in '3m' do
+      at_exit { puts 'Goodbye from ' + appName }
+      current_pid = Process.pid
+      signal = 'SIGTERM'
+      Process.kill(signal, current_pid)
+    end
+  end
+  
+  
+
+  
+end

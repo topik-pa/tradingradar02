@@ -1,0 +1,8 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <h1>Editing Source France</h1>
+  <%= render 'form', source_france: @source_france %>
+  <%= link_to 'Show', @source_france %> |
+  <%= link_to 'Back', source_frances_path %>
+</div>

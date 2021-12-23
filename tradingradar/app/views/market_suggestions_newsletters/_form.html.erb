@@ -1,0 +1,52 @@
+<%= form_with(model: market_suggestions_newsletter, local: true) do |form| %>
+  <% if market_suggestions_newsletter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(market_suggestions_newsletter.errors.count, "error") %> prohibited this market_suggestions_newsletter from being saved:</h2>
+
+      <ul>
+      <% market_suggestions_newsletter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :active %>
+    <%= form.check_box :active %>
+  </div>
+
+  <div class="field">
+    <%= form.label :privacy %>
+    <%= form.check_box :privacy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :referrer %>
+    <%= form.text_field :referrer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sended %>
+    <%= form.text_field :sended %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_sended %>
+    <%= form.text_field :total_sended %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

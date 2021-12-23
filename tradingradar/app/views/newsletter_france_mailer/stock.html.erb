@@ -1,0 +1,334 @@
+<%
+#Add a class depending of the variation sign
+def addZSignClass(value)
+    if value.to_s.include?("-")
+        "negative"
+    else
+        "positive"
+    end
+end
+%>
+
+<% 
+logoUrl = 'https://tradingradar.s3.eu-west-3.amazonaws.com/bkup-tradingradar-logo-2.png'
+fontSizeSmall = '16px'
+fontSizeDefault = '20px'
+fontSizeBig = '32px'
+fontSizeBigger = '48px'
+bgColor = '#ffffff'
+introBgColor = '#d6e7f0'
+thBgColor = '#dddddd'
+sectionsBgColor = '#eeeeee'
+titleBgColor = '#2196F3'
+titleColor = '#ffffff'
+highligthColor = '#fc7318'
+textColor = '#444444'
+%>
+
+
+<table style="max-width:650px; width:100%; margin:0 auto; font-size:<%= fontSizeDefault %>; color: <%= textColor %>; font-family: Lato, sans-serif;">
+  
+  <!--LOGO-->
+  <tr>
+    <th>
+      <img height="40px" src="<%= logoUrl %>"/>
+    </th>
+  </tr>
+
+  <!--INTRO-->
+  <tr style="
+        background-color: <%= introBgColor %>;
+        font-size: <%= fontSizeBig %>;
+        text-align: center;        
+        line-height: <%= fontSizeBig %>">
+    <td>
+      <span style="color: <%= highligthColor %>; font-weight: bold;">STOCK</span> newsletter from <br/>
+      <span style="color: <%= textColor %>;">tradingradar.net</span>
+    </td>
+  </tr>
+  <tr style="
+        background-color: <%= introBgColor %>;
+        text-align: center;
+        font-style: italic;
+        line-height: <%= fontSizeBig %>">
+    <td>Follow every the most interesting Stock on the Market!</td>
+  </tr>
+
+
+  <!--STOCK-->
+  <tr>
+    <td>
+      <table style="width:100%;">
+        <tr>
+          <th>Stock</th>
+          <th>Last price</th>
+          <th>Variation</th>
+        </tr>
+        <tr>
+          <td style="font-style:italic">
+            <%= @stock.name %> - <%= @stock.reuters %>
+          </td>
+          <td style="font-style:italic">
+            <%= @stock.last_price %>&euro;
+          </td>
+          <td style="font-style:italic;" class="<%= addZSignClass(@stock.variation) %>">
+            <%= @stock.variation %>&#37;
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+
+  <!--SEPARATOR-->
+  <tr style="background-color: <%= bgColor %>">
+    <td></td>
+  </tr>
+
+
+  <!--PERFORMANCE-->
+  <tr>
+    <td>
+      <table style="width:100%;">
+        <tr style="background-color: <%= thBgColor %>">
+          <th>1 mouth</th>
+          <th>6 mouths</th>
+          <th>12 mouths</th>
+        </tr>
+        <tr>
+          <td style="font-style:italic;" class="<%= addZSignClass(@stock.performance1) %>">
+            <%= @stock.performance1 %>&#37;
+          </td>
+          <td style="font-style:italic;" class="<%= addZSignClass(@stock.performance6) %>">
+            <%= @stock.performance6 %>&#37;
+          </td>
+          <td style="font-style:italic;" class="<%= addZSignClass(@stock.performance12) %>">
+            <%= @stock.performance12 %>&#37;
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  
+  <!--SEPARATOR-->
+  <tr style="background-color: <%= bgColor %>">
+    <td></td>
+  </tr>
+
+
+  <!--TITLED SECTION-->
+  <tr style="
+        background-color: <%= titleBgColor %>;
+        color: <%= titleColor %>;
+        text-transform: uppercase;
+        line-height: <%= fontSizeBig %>;
+        font-size: <%= fontSizeBig %>;
+        letter-spacing: 3px;">
+    <td>Media analyses and ratings</td>
+  </tr>
+  <tr>
+    <td>
+      <table style="width:100%;">
+        <tr style="background-color: <%= thBgColor %>">
+          <th width="25%"></th>          
+          <th>Short trend</th>
+          <th>Medium trend</th>
+          <th>Long trend</th>
+        </tr>
+        <tr>
+          <td>
+            <strong><a href="<%= @urls.url_0 %>">Trading Sat</a></strong>
+          </td>
+          <td style="font-style:italic;">
+            <%= @report.tradingsat_trendshort %>
+          </td>
+          <td style="font-style:italic;">
+            <%= @report.tradingsat_trendmedium %>
+          </td>
+          <td style="font-style:italic;">
+            <%= @report.tradingsat_trendlong %>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!--SEPARATOR-->
+  <tr style="background-color: <%= bgColor %>">
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>
+      <table style="width:100%;">
+        <tr style="background-color: <%= thBgColor %>">
+          <th width="25%"></th>
+          <th>Consensus</th>
+        </tr>
+        <tr>
+          <td>
+            <strong><a href="<%= @urls.url_0 %>">Le Figaro</a></strong>
+          </td>
+          <td style="font-style:italic;">
+            <%= @report.lefigaro_consensus %>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!--SEPARATOR-->
+  <tr style="background-color: <%= bgColor %>">
+    <td></td>
+  </tr>
+
+
+  <tr>
+    <td>
+      <table style="width:100%;">
+        <tr style="background-color: <%= thBgColor %>">
+          <th width="25%"></th>
+          <th>Rating</th>
+          <th>Target</th>
+          <th>Support</th>
+          <th>Resistance</th>
+          <th>Trend short</th>
+        </tr>
+        <tr>
+          <td>
+            <strong>Bourse Fortuneo</strong>
+          </td>
+          <td style="font-style:italic;">
+            <%= @report.boursefortuneo_rating %>
+          </td>
+          <td style="font-style:italic;">
+            <%= @report.boursefortuneo_target %>
+          </td>
+          <td style="font-style:italic;">
+            <%= @report.boursefortuneo_support %>
+          </td>
+          <td style="font-style:italic;">
+            <%= @report.boursefortuneo_resistance %>
+          </td>
+          <td style="font-style:italic;">
+            <%= @report.boursefortuneo_trendshort %>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+
+  <!--SEPARATOR-->
+  <tr style="background-color: <%= bgColor %>">
+    <td></td>
+  </tr>
+
+
+  <!--SEE MORE-->
+  <tr>
+    <td>
+      <a href="<%= "http://www.tradingradar.net/stock/" + @stock.name.parameterize + "?isin=" + @stock.isin %>" class="btn primary">See more about <%= @stock.name %></a>
+    </td>
+  </tr>
+
+  <!--SEPARATOR-->
+  <tr style="background-color: <%= bgColor %>">
+    <td></td>
+  </tr>
+
+
+  <!-- CONTINUE RECEIVING-->
+  <tr>
+    <td>
+      <table style="width:100%;background-color: <%= sectionsBgColor %>;">
+        <tr style="color: <%= highligthColor %>; font-size: <%= fontSizeBig %>;">
+          <td>
+            Newletter: <%= @sended %><span style="font-size:<%= fontSizeSmall %>">/5</span>
+          </td>
+        </tr>
+        <tr style="font-style: italic;">
+          <td>
+            This newsletter are <strong>limited to five</strong>! <br/>
+            To <strong>restart the counter</strong> click the following link:
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="<%= "http://www.tradingradar.net" + "?test=" + "1234" %>" class="btn secondary">Continue receving this newsletter</a>
+          </td>
+        </tr>
+        <tr>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+
+  <!--PROBLEMS-->
+  <tr>
+    <td>
+      <table style="width:100%;background-color: <%= sectionsBgColor %>;">
+        <tr style="color: <%= highligthColor %>; font-size: <%= fontSizeBig %>;">
+          <td>
+            Troubles?
+          </td>
+        </tr>
+        <tr style="font-style: italic;">
+          <td>
+            We are here to help you!
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Mail us at: <a style="color:<%= titleBgColor %>;font-weight:bold;" href="mailto:info@tradingradar.net">info@tradingradar.net</a>
+          </td>
+        </tr>
+        <tr>
+        </tr>
+      </table>
+    </td>
+  </tr>  
+
+
+  <!--SOCIALS-->
+  <tr>
+    <td>
+      <table style="width:100%;background-color: <%= sectionsBgColor %>;">
+        <tr style="color: <%= highligthColor %>; font-size: <%= fontSizeBig %>;">
+          <td>
+            Follow us on our Socials!
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table class="social_icons" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" valign="top">
+              <tbody>
+                <tr style="vertical-align: top;" valign="top">
+                  <td style="word-break: break-word; vertical-align: top; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; border-collapse: collapse;" valign="top">
+                    <table class="social_table" align="center" to="to" activate="activate" alignment="alignment" cellpadding="0" cellspacing="0" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: undefined; mso-table-tspace: 0; mso-table-rspace: 0; mso-table-bspace: 0; mso-table-lspace: 0;" valign="top">
+                      <tbody>
+                        <tr style="vertical-align: top; display: inline-block; text-align: center;" align="center" valign="top">
+                          <td style="word-break: break-word; vertical-align: top; padding-bottom: 5px; padding-right: 8px; padding-left: 8px; border-collapse: collapse;" valign="top"><a href="https://www.facebook.com/tradingradar" target="_blank"><img width="32" height="32" src="https://d2fi4ri5dhpqd1.cloudfront.net/public/resources/social-networks-icon-sets/circle-color/facebook@2x.png" alt="Facebook" title="Facebook" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; display: block;"></a></td>
+                          <td style="word-break: break-word; vertical-align: top; padding-bottom: 5px; padding-right: 8px; padding-left: 8px; border-collapse: collapse;" valign="top"><a href="https://twitter.com/" target="_blank"><img width="32" height="32" src="https://d2fi4ri5dhpqd1.cloudfront.net/public/resources/social-networks-icon-sets/circle-color/twitter@2x.png" alt="Twitter" title="Twitter" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; display: block;"></a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table> 
+          </td>
+        </tr>
+        <tr>
+        </tr>
+      </table>
+    </td>
+  </tr> 
+
+
+
+</table>
+
+    

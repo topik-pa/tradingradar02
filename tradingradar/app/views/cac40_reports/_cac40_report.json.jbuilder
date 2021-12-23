@@ -1,0 +1,2 @@
+json.extract! cac40_report, :id, :isin, :stock, :tradingsat_trendshort, :tradingsat_trendmedium, :tradingsat_trendlong, :boursefortuneo_support, :boursefortuneo_resistance, :boursefortuneo_volatility, :boursefortuneo_target, :boursefortuneo_rating, :boursefortuneo_trendshort, :boursefortuneo_trendmedium, :zonebourse_trendshort, :zonebourse_trendmedium, :zonebourse_trendlong, :zonebourse_resistance, :zonebourse_support, :abcbourse_consensus, :abcbourse_tendency, :lefigaro_consensus, :created_at, :updated_at
+json.url cac40_report_url(cac40_report, format: :json)

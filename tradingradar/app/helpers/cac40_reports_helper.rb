@@ -1,0 +1,2 @@
+module Cac40ReportsHelper
+end

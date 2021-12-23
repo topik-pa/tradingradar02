@@ -1,0 +1,55 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Isin:</strong>
+    <%= @user_report.isin %>
+  </p>
+  <p>
+    <strong>Stock:</strong>
+    <%= @user_report.stock %>
+  </p>
+  <p>
+    <strong>Support:</strong>
+    <%= @user_report.support %>
+  </p>
+  <p>
+    <strong>Resistance:</strong>
+    <%= @user_report.resistance %>
+  </p>
+  <p>
+    <strong>Trendshort:</strong>
+    <%= @user_report.trendshort %>
+  </p>
+  <p>
+    <strong>Trendmedium:</strong>
+    <%= @user_report.trendmedium %>
+  </p>
+  <p>
+    <strong>Trendlong:</strong>
+    <%= @user_report.trendlong %>
+  </p>
+  <p>
+    <strong>Rating:</strong>
+    <%= @user_report.rating %>
+  </p>
+  <p>
+    <strong>Note:</strong>
+    <%= @user_report.note %>
+  </p>
+  <p>
+    <strong>Buy:</strong>
+    <%= @user_report.buy %>
+  </p>
+  <p>
+    <strong>Sell:</strong>
+    <%= @user_report.sell %>
+  </p>
+  <p>
+    <strong>Sl:</strong>
+    <%= @user_report.sl %>
+  </p>
+  <%= link_to 'Edit', edit_user_report_path(@user_report) %> |
+  <%= link_to 'Back', user_reports_path %>
+</div>

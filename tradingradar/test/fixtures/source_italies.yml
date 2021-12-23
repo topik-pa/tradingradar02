@@ -1,0 +1,57 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  isin: MyString
+  name: MyString
+  url_0: MyString
+  cod_0: MyString
+  url_1: MyString
+  cod_1: MyString
+  url_2: MyString
+  cod_2: MyString
+  url_3: MyString
+  cod_3: MyString
+  url_4: MyString
+  cod_4: MyString
+  url_5: MyString
+  cod_5: MyString
+  url_6: MyString
+  cod_6: MyString
+  url_7: MyString
+  cod_7: MyString
+  url_8: MyString
+  cod_8: MyString
+  url_9: MyString
+  cod_9: MyString
+  url_10: MyString
+  cod_10: MyString
+  url_11: MyString
+  cod_11: MyString
+
+two:
+  isin: MyString
+  name: MyString
+  url_0: MyString
+  cod_0: MyString
+  url_1: MyString
+  cod_1: MyString
+  url_2: MyString
+  cod_2: MyString
+  url_3: MyString
+  cod_3: MyString
+  url_4: MyString
+  cod_4: MyString
+  url_5: MyString
+  cod_5: MyString
+  url_6: MyString
+  cod_6: MyString
+  url_7: MyString
+  cod_7: MyString
+  url_8: MyString
+  cod_8: MyString
+  url_9: MyString
+  cod_9: MyString
+  url_10: MyString
+  cod_10: MyString
+  url_11: MyString
+  cod_11: MyString

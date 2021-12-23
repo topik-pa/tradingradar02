@@ -1,0 +1,54 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <h1>Source Frances</h1>
+  <div class="table-wrapper">
+    <table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Isin</th>
+        <th scope="col">Name</th>
+        <th scope="col">Url 0</th>
+        <th scope="col">Url 1</th>
+        <th scope="col">Url 2</th>
+        <th scope="col">Url 3</th>
+        <th scope="col">Url 4</th>
+        <th scope="col">Url 5</th>
+        <th scope="col">Url 6</th>
+        <th scope="col">Url 7</th>
+        <th scope="col">Url 8</th>
+        <th scope="col">Url 9</th>
+        <th scope="col">Url 10</th>
+        <th scope="col">Url 11</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @source_frances.each do |source_france| %>
+        <tr class='<%= cycle('odd', 'even') %>'>
+          <td title="<%= source_france.isin %>"><%= source_france.isin %></td>
+          <td title="<%= source_france.name %>"><%= source_france.name %></td>
+          <td title="<%= source_france.url_0 %>"><%= source_france.url_0 %></td>
+          <td title="<%= source_france.url_1 %>"><%= source_france.url_1 %></td>
+          <td title="<%= source_france.url_2 %>"><%= source_france.url_2 %></td>
+          <td title="<%= source_france.url_3 %>"><%= source_france.url_3 %></td>
+          <td title="<%= source_france.url_4 %>"><%= source_france.url_4 %></td>
+          <td title="<%= source_france.url_5 %>"><%= source_france.url_5 %></td>
+          <td title="<%= source_france.url_6 %>"><%= source_france.url_6 %></td>
+          <td title="<%= source_france.url_7 %>"><%= source_france.url_7 %></td>
+          <td title="<%= source_france.url_8 %>"><%= source_france.url_8 %></td>
+          <td title="<%= source_france.url_9 %>"><%= source_france.url_9 %></td>
+          <td title="<%= source_france.url_10 %>"><%= source_france.url_10 %></td>
+          <td title="<%= source_france.url_11 %>"><%= source_france.url_11 %></td>
+          <td><%= link_to 'Show', source_france %></td>
+          <td><%= link_to 'Edit', edit_source_france_path(source_france) %></td>
+          <td><%= link_to 'Destroy', source_france, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+  <br>
+  <%= link_to 'New Source France', new_source_france_path %>
+</div>

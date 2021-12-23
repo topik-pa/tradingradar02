@@ -1,0 +1,55 @@
+<!--Logo and menu-->
+<%= render("partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <!--Content-->
+  <section class="bg-white section-bottom-60 section-xs-type-1">
+    <div class="shell">
+      <div class="range range-center range-40">
+        <div class="cell-md-8 cell-lg-8">
+          <div class="contact-box">
+            <h2><%= t('layouts.contactsPage.title') %></h2>
+            <ul class="contact-list">
+              <li><%= t('layouts.contactsPage.personalContact') %><a href="mailto:<%= I18n.t("application.adminEmail") %>"><%= I18n.t("application.adminEmail")%></a></li>
+              <li><%= t('layouts.contactsPage.generalInfos') %><a href="mailto:<%= I18n.t("application.infoEmail") %>"><%= I18n.t("application.infoEmail") %></a></li>
+            </ul>
+            <h3><%= t('layouts.contactsPage.subtitle') %></h3>
+            <p class="big"><%= t('layouts.contactsPage.notabene') %></p>
+
+            <!-- RD Mailform-->
+            <div class="notice">
+              <%= flash[:notice] %>
+            </div>
+            <div class="alert">
+              <%= flash[:alert] %>
+            </div>
+            <%= form_for @message, url: contacts_path, html: { class: "rd-mailform text-left", 'data-form-output': "form-output-global", "data-form-type": "contact", "novalidate": "novalidate" } do |message| %>
+              <fieldset>
+                <div class="form-wrap">
+                  <label class="form-label rd-input-label" for="contact-name"><%= t('layouts.application.yourName') %>*</label>
+                  <input class="form-input form-control-has-validation form-control-last-child" id="contact-name" type="text" name="name" data-constraints="@Required"><span class="form-validation"></span>
+                </div>
+                <div class="form-wrap">
+                  <label class="form-label rd-input-label" for="contact-email2"><%= t('layouts.application.yourEmail') %>*</label>
+                  <input class="form-input form-control-has-validation form-control-last-child" id="contact-email2" type="email" name="email" data-constraints="@Email @Required"><span class="form-validation"></span>
+                </div>
+                <div class="form-wrap">
+                  <label class="form-label rd-input-label" for="contact-message"><%= t('layouts.application.yourComment') %>*</label>
+                  <textarea class="form-input form-control-has-validation form-control-last-child" id="contact-message" name="message" data-constraints="@Required"></textarea>
+                  <span class="form-validation"></span>
+                </div>
+                <div class="form-button group-sm text-left">
+                  <button class="button button-primary" type="submit"><%= t('layouts.application.send') %></button>
+                </div>
+              </fieldset>
+            <% end %>
+            
+          </div>
+        </div>
+        <div class="cell-md-4">
+          <%= render("partials/sidebar") %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

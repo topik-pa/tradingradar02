@@ -1,0 +1,106 @@
+<%= form_with(model: stock, local: true) do |form| %>
+  <% if stock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
+      <ul>
+        <% stock.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= form.label :isin %>
+    <%= form.text_field :isin, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :reuters %>
+    <%= form.text_field :reuters, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :sector %>
+    <%= form.text_field :sector, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :last_price %>
+    <%= form.text_field :last_price, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :variation %>
+    <%= form.text_field :variation, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :market_phase %>
+    <%= form.text_field :market_phase, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :corporate_url %>
+    <%= form.text_field :corporate_url, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_field :address, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :market %>
+    <%= form.text_field :market, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :currency %>
+    <%= form.text_field :currency, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :profile %>
+    <%= form.text_area :profile, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :keywords %>
+    <%= form.text_field :keywords, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :dividend %>
+    <%= form.text_field :dividend, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :dividend_date %>
+    <%= form.text_field :dividend_date, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :dividend_yeld %>
+    <%= form.text_field :dividend_yeld, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :performance1 %>
+    <%= form.text_field :performance1, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :performance6 %>
+    <%= form.text_field :performance6, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :performance12 %>
+    <%= form.text_field :performance12, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :code %>
+    <%= form.text_field :code, class:'form-control' %>
+  </div>
+  <!--<div class="form-group">
+  	<% form.label :sources %>
+	<% for source in Source.all %>
+	  <% check_box_tag "stock[source_ids][]", source.id %>
+	  <% source.name %> - <% source.isin %><br />
+	<% end %>
+  </div>  -->
+  <div class="actions">
+    <%= form.submit nil, class: 'btn btn-primary' %>
+  </div>
+<% end %>

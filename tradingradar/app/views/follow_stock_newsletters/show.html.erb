@@ -1,0 +1,43 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Stock:</strong>
+    <%= @follow_stock_newsletter.stock %>
+  </p>
+  <p>
+    <strong>Isin:</strong>
+    <%= @follow_stock_newsletter.isin %>
+  </p>
+  <p>
+    <strong>Email:</strong>
+    <%= @follow_stock_newsletter.email %>
+  </p>
+  <p>
+    <strong>Active:</strong>
+    <%= @follow_stock_newsletter.active %>
+  </p>
+  <p>
+    <strong>Privacy:</strong>
+    <%= @follow_stock_newsletter.privacy %>
+  </p>
+  <p>
+    <strong>Referrer:</strong>
+    <%= @follow_stock_newsletter.referrer %>
+  </p>
+  <p>
+    <strong>Sended:</strong>
+    <%= @follow_stock_newsletter.sended %>
+  </p>
+  <p>
+    <strong>Total sended:</strong>
+    <%= @follow_stock_newsletter.total_sended %>
+  </p>
+  <p>
+    <strong>Code:</strong>
+    <%= @follow_stock_newsletter.code %>
+  </p>
+  <%= link_to 'Edit', edit_follow_stock_newsletter_path(@follow_stock_newsletter) %> |
+  <%= link_to 'Back', follow_stock_newsletters_path %>
+</div>

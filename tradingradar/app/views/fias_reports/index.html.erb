@@ -1,0 +1,68 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <h1>Fias Reports</h1>
+  <div class="table-wrapper">
+    <table class="table table-hover table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Isin</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Borsaitaliana support</th>
+          <th scope="col">Borsaitaliana resistance</th>
+          <th scope="col">Borsaitaliana fta</th>
+          <th scope="col">Borsaitaliana rsi</th>
+          <th scope="col">Borsaitaliana volatility</th>
+          <th scope="col">Sole24ore support</th>
+          <th scope="col">Sole24ore resistance</th>
+          <th scope="col">Sole24ore shorttrend</th>
+          <th scope="col">Sole24ore mediumtrend</th>
+          <th scope="col">Sole24ore rating</th>
+          <th scope="col">Sole24ore relativestrenght</th>
+          <th scope="col">Sole24ore fta</th>
+          <th scope="col">Sole24ore rsi</th>
+          <th scope="col">Sole24ore rsidiv</th>
+          <th scope="col">Sole24ore strategy</th>
+          <th scope="col">Milanofinanza risk</th>
+          <th scope="col">Milanofinanza rating</th>
+          <th scope="col">Milanofinanza trendshort</th>
+          <th scope="col">Milanofinanza trendmedium</th>
+          <th scope="col">Milanofinanza trendlong</th>
+          <th scope="col">Teleborsa support</th>
+          <th scope="col">Teleborsa resistance</th>
+          <th scope="col" colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @fias_reports.each do |fias_report| %>
+          <tr class='<%= cycle('odd', 'even') %>'>
+            <td title="<%= fias_report.isin %>"><%= fias_report.isin %></td>
+            <td title="<%= fias_report.stock %>"><%= fias_report.stock %></td>
+            <td title="<%= fias_report.borsaitaliana_support %>"><%= fias_report.borsaitaliana_support %></td>
+            <td title="<%= fias_report.borsaitaliana_resistance %>"><%= fias_report.borsaitaliana_resistance %></td>
+            <td title="<%= fias_report.borsaitaliana_fta %>"><%= fias_report.borsaitaliana_fta %></td>
+            <td title="<%= fias_report.borsaitaliana_rsi %>"><%= fias_report.borsaitaliana_rsi %></td>
+            <td title="<%= fias_report.borsaitaliana_volatility %>"><%= fias_report.borsaitaliana_volatility %></td>
+            <td title="<%= fias_report.sole24ore_shorttrend %>"><%= fias_report.sole24ore_shorttrend %></td>
+            <td title="<%= fias_report.sole24ore_mediumtrend %>"><%= fias_report.sole24ore_mediumtrend %></td>
+            <td title="<%= fias_report.sole24ore_rating %>"><%= fias_report.sole24ore_rating %></td>
+            <td title="<%= fias_report.sole24ore_relativestrenght %>"><%= fias_report.sole24ore_relativestrenght %></td>
+            <td title="<%= fias_report.milanofinanza_risk %>"><%= fias_report.milanofinanza_risk %></td>
+            <td title="<%= fias_report.milanofinanza_rating %>"><%= fias_report.milanofinanza_rating %></td>
+            <td title="<%= fias_report.milanofinanza_trendshort %>"><%= fias_report.milanofinanza_trendshort %></td>
+            <td title="<%= fias_report.milanofinanza_trendmedium %>"><%= fias_report.milanofinanza_trendmedium %></td>
+            <td title="<%= fias_report.milanofinanza_trendlong %>"><%= fias_report.milanofinanza_trendlong %></td>
+            <td title="<%= fias_report.teleborsa_support %>"><%= fias_report.teleborsa_support %></td>
+            <td title="<%= fias_report.teleborsa_resistance %>"><%= fias_report.teleborsa_resistance %></td>
+            <td><%= link_to 'Show', fias_report %></td>
+            <td><%= link_to 'Edit', edit_fias_report_path(fias_report) %></td>
+            <td><%= link_to 'Destroy', fias_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <%= link_to 'New Fias Report', new_fias_report_path %>
+</div>

@@ -1,0 +1,31 @@
+<section id="section-left-sidebar">
+  <div class="range range-50">
+    <div class="cell-sm-6 cell-md-12">
+      <div id="modalSubscriptionAside" class="sidebar-form-block">
+        <h3><%= t('layouts.application.followTheStock') %></h3>
+        <p>
+          <%= t('layouts.application.gainInfoAboutStock') %>
+        </p>
+        <%= render("partials/newsletters/form-follow-stock-newsletter_sidebar") %>
+        <h3><%= t('layouts.application.followTheMarket') %></h3>
+        <p>
+          <%= t('layouts.application.gainInfoAboutMarket') %>
+        </p>
+        <%= render("partials/newsletters/form-market-suggestions-newsletter_sidebar") %>
+        <div class="section-subscribe">
+          <h3>
+            <%= t('layouts.application.followUs') %>
+            <span class="soc-icon">
+              <a class="icon fa-facebook-square" href="<%= t('socials.facebook') %>"></a>
+              <a class="icon fa-twitter" href="<%= t('socials.twitter') %>"></a>
+            </span>
+          </h3>
+          <!--<div class="soc-icon">
+			<a class="icon fa-twitter" href="https://www.facebook.com/tradingradar/"></a>
+			<a class="icon fa-facebook-square" href="#"></a>
+		</div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

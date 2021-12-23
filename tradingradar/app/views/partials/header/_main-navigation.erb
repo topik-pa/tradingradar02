@@ -1,0 +1,26 @@
+<div class="rd-navbar-nav-wrap">
+  <!-- RD Navbar Nav-->
+  <ul class="rd-navbar-nav">
+    <li class="<%= 'active' if current_page?(controller: 'home', action: 'index') %>">
+      <%= link_to image_tag($imagePath + "tradingradar-logo.png", :alt => t('layouts.application.logoDescription'), :width => '24px') + " " + t('layouts.application.home'), {:controller => "home", :action => "index"} %>
+    </li>
+    <li class="<%= 'active' if current_page?(controller: 'analyses', action: 'index') %>">
+      <%= link_to(t('layouts.application.stockAnalysis'), {:controller => "analyses", :action => "index"}) %>
+      <ul class="rd-navbar-dropdown">
+        <% if $last6BlogAnalysesPosts%>
+          <% $last6BlogAnalysesPosts.each do |post| %>
+            <li>
+              <%= link_to post['stock'], post %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </li>
+    <li class="<%= 'active' if current_page?(controller: 'pages', action: 'about') %>">
+      <%= link_to(t('layouts.application.about_html'), {:controller => "pages", :action => "about"}) %>
+    </li>
+    <li class="<%= 'active' if current_page?(controller: 'pages', action: 'contacts') %>">
+      <%= link_to(t('layouts.application.contacts'), {:controller => "pages", :action => "contacts"}) %>
+    </li>
+  </ul>
+</div>

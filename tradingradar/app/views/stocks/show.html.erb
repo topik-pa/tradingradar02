@@ -1,0 +1,91 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Isin:</strong>
+    <%= @stock.isin %>
+  </p>
+  <p>
+    <strong>Reuters:</strong>
+    <%= @stock.reuters %>
+  </p>
+  <p>
+    <strong>Name:</strong>
+    <%= @stock.name %>
+  </p>
+  <p>
+    <strong>Sector:</strong>
+    <%= @stock.sector %>
+  </p>
+  <p>
+    <strong>Last price:</strong>
+    <%= @stock.last_price %>
+  </p>
+  <p>
+    <strong>Variation:</strong>
+    <%= @stock.variation %>
+  </p>
+  <p>
+    <strong>Market phase:</strong>
+    <%= @stock.market_phase %>
+  </p>
+  <p>
+    <strong>Corporate url:</strong>
+    <%= @stock.corporate_url %>
+  </p>
+  <p>
+    <strong>Address:</strong>
+    <%= @stock.address %>
+  </p>
+  <p>
+    <strong>Phone:</strong>
+    <%= @stock.phone %>
+  </p>
+  <p>
+    <strong>Market:</strong>
+    <%= @stock.market %>
+  </p>
+  <p>
+    <strong>Currency:</strong>
+    <%= @stock.currency %>
+  </p>
+  <p>
+    <strong>Profile:</strong>
+    <%= @stock.profile %>
+  </p>
+  <p>
+    <strong>Keywords:</strong>
+    <%= @stock.keywords %>
+  </p>
+  <p>
+    <strong>Dividend:</strong>
+    <%= @stock.dividend %>
+  </p>
+  <p>
+    <strong>Dividend date:</strong>
+    <%= @stock.dividend_date %>
+  </p>
+  <p>
+    <strong>Dividend yeld:</strong>
+    <%= @stock.dividend_yeld %>
+  </p>
+  <p>
+    <strong>Performance1:</strong>
+    <%= @stock.performance1 %>
+  </p>
+  <p>
+    <strong>Performance6:</strong>
+    <%= @stock.performance6 %>
+  </p>
+  <p>
+    <strong>Performance12:</strong>
+    <%= @stock.performance12 %>
+  </p>
+  <p>
+    <strong>Code:</strong>
+    <%= @stock.code %>
+  </p>
+  <%= link_to 'Edit', edit_stock_path(@stock) %> |
+  <%= link_to 'Back', stocks_path %>
+</div>

@@ -1,0 +1,25 @@
+<!--Logo and menu-->
+<%= render("partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <!--Content-->
+  <section class="bg-white section-bottom-60 section-xs-type-1">
+    <div class="shell">
+      <div class="range range-center range-40">
+        <div class="cell-md-8 cell-lg-8">
+          <div class="blog-post">
+                <h2><%= t('layouts.aboutPage.title') %></h2>
+                <%= image_tag($imagePath + 'banners/' + 'bestForMarketsBanner_5.jpg', width: '930', height: '507', alt: '') %>
+                <h3><%= t('layouts.aboutPage.subtitle') %></h3>
+                <p class="big text-sbold text text-gray-dark">
+                  <%= t('layouts.aboutPage.body_html') %>
+                </p>
+              </div>
+        </div>
+        <div class="cell-md-4">
+          <%= render("partials/sidebar") %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

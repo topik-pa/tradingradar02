@@ -1,0 +1,2 @@
+json.extract! fias_report, :id, :isin, :stock, :borsaitaliana_support, :borsaitaliana_resistance, :borsaitaliana_fta, :borsaitaliana_rsi, :borsaitaliana_volatility, :sole24ore_shorttrend, :sole24ore_mediumtrend, :sole24ore_rating, :sole24ore_relativestrenght, :milanofinanza_risk, :milanofinanza_rating, :milanofinanza_trendshort, :milanofinanza_trendmedium, :milanofinanza_trendlong, :teleborsa_support, :teleborsa_resistance, :created_at, :updated_at
+json.url fias_report_url(fias_report, format: :json)

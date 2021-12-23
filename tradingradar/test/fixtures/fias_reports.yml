@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  isin: MyString
+  stock: MyString
+  borsaitaliana_support: 9.99
+  borsaitaliana_resistance: 9.99
+  borsaitaliana_fta: 1
+  borsaitaliana_rsi: 9.99
+  borsaitaliana_volatility: 9.99
+  sole24ore_support: 9.99
+  sole24ore_resistance: 9.99
+  sole24ore_shorttrend: MyString
+  sole24ore_fta: 1
+  sole24ore_rsi: 1
+  sole24ore_rsidiv: MyString
+  sole24ore_strategy: MyText
+  milanofinanza_risk: 9.99
+  milanofinanza_rating: MyString
+  milanofinanza_trendshort: MyString
+  milanofinanza_trendmedium: MyString
+  milanofinanza_trendlong: MyString
+  teleborsa_support: 9.99
+  teleborsa_resistance: 9.99
+
+two:
+  isin: MyString
+  stock: MyString
+  borsaitaliana_support: 9.99
+  borsaitaliana_resistance: 9.99
+  borsaitaliana_fta: 1
+  borsaitaliana_rsi: 9.99
+  borsaitaliana_volatility: 9.99
+  sole24ore_support: 9.99
+  sole24ore_resistance: 9.99
+  sole24ore_shorttrend: MyString
+  sole24ore_fta: 1
+  sole24ore_rsi: 1
+  sole24ore_rsidiv: MyString
+  sole24ore_strategy: MyText
+  milanofinanza_risk: 9.99
+  milanofinanza_rating: MyString
+  milanofinanza_trendshort: MyString
+  milanofinanza_trendmedium: MyString
+  milanofinanza_trendlong: MyString
+  teleborsa_support: 9.99
+  teleborsa_resistance: 9.99

@@ -1,0 +1,69 @@
+<section id="filters" class="section-sm bg-white">
+	<div class="section-title">
+		<h3><%= t('layouts.application.best4Title') %></h3>
+		<p><%= t('layouts.application.best4Subtitle') %></p>
+	</div>
+	<div class="shell">
+		<div class="range">	
+			<% $tradingMarkets.each do |market| %>
+				<div class="cell-xs-12" id="<%= market['country'] %>_filters"> 
+					<div class="section-title">
+						<h4><%= market['country'] %></h4>
+						<div class="isotope-filters isotope-filters-horizontal">
+							<button class="isotope-filters-toggle isotope-filters-toggle-1 button" data-custom-toggle="#isotope-filters" data-custom-toggle-disable-on-blur="true">
+								<span class="caret"></span>
+							</button>
+							<ul class="isotope-filters-list" id="isotope-filters">
+								<% market['best4'].each_with_index do |media, index| %>
+									<li>
+										<a data-isotope-filter="filterCat<%= market['country'] %>_<%= index %>" data-isotope-group="<%= market['country'] %>" href="#" <% if index == 0 %> class="active" <% end %> > <%= media['label'] %> </a>
+									</li>
+								<% end %>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="cell-xs-12 filters">
+					<div class="row">
+						<div class="isotope" data-isotope-layout="fitRows" data-isotope-group="<%= market['country'] %>">
+							<div class="row">
+								<% market['best4'].each_with_index do |media, index| %>
+									<% if index < 4 %>
+										<% media['4stocks'].take(4).each_with_index do |stock| %>
+											<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item" data-filter="filterCat<%= market['country'] %>_<%= index %>">
+												<div class="post-type-2">												
+													<div class="caption">
+														<h4>
+															<%= link_to stock['name'], {:controller => "stock", :action => "index", :id => stock['name'].parameterize, :isin => stock['isin']} %>
+														</h4>														
+														<dl>
+															<dt><%= t('layouts.application.lastPrice') %></dt>
+															<dd>&euro; <span><%= stock['last_price'] %></span></dd>
+														</dl>														
+														<dl>
+															<% media['parameters'].each do |param| %>	
+															<br/>																																												
+																<dt><%= param['label'] %></dt>
+																<% if param['dataname'] == nil %>
+																	<dd><span><%= stock[param['value']] %></span></dd> 
+																<% elsif stock[param['againstValue']]%>
+																	<dd><%= content_tag(:span, stock[param['value']], class: 'transform', data: { 'type' => param['dataname'], param['dataname'] => stock[param['value']], param['againstDataname'] =>  stock[param['againstValue']]}) %></dd>
+																<% else %>
+																	<dd><%= content_tag(:span, stock[param['value']], class: 'transform', data: { 'type' => param['dataname'], param['dataname'] => stock[param['value']], param['againstDataname'] =>  param['againstValue']}) %></dd>
+																<% end %>
+															<% end %>	
+														</dl>
+													</div>
+												</div>
+											</div>
+										<% end %>
+									<% end %>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</section>

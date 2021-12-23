@@ -1,0 +1,59 @@
+<div class="section-xs">
+  <div class="section-title">
+    <h3><%= t('layouts.application.stockList') %></h3>
+  </div>
+  <div class="range range-xs-center tabs-custom-wrap search-by-first-letter">
+    <div class="cell-sm-12">
+      <%= link_to '#', controller: "market", action: @tradingMarket["country"], query: '#' %>
+      <% ("A".."Z").each do |letter|  
+				classValue = '';
+				if letter == 'Q' or letter == 'W' or letter == 'X'
+					classValue += 'disabled'
+				end
+				if params[:query]
+					if params[:query] == letter
+						classValue += 'current'
+					end
+				else 
+					if letter == 'A'
+						classValue += 'current'
+					end 
+				end
+			%>
+      <%= link_to letter, {controller: "market", action: @tradingMarket["country"], query: letter}, class: classValue %>
+    <% end %>
+  </div>
+</div>
+</div>
+<% if !@stockListByLetter.empty? %>
+  <div class="table-wrapper js-table loaded">
+    <table class="table table-hover table-sm">
+      <thead>
+        <tr>
+          <th scope="col"><%= t('layouts.application.name') %></th>
+          <th scope="col"><%= t('layouts.application.perf1') %></th>
+          <th scope="col"><%= t('layouts.application.perf6') %></th>
+          <th scope="col"><%= t('layouts.application.perf12') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stockListByLetter.each do |stock| %>
+          <tr>
+            <td title="<%= stock.name %>"><%= link_to stock.name, {:controller => "stock", :action => "index", :id => stock.name.parameterize, :isin => stock.isin} %>  </td>
+            <td class="<%= addZSignClass(stock.performance1) %>" title="<%= stock.performance1 %>"><%= stock.performance1 %></td>
+            <td class="<%= addZSignClass(stock.performance6) %>" title="<%= stock.performance6 %>"><%= stock.performance6 %></td>
+            <td class="<%= addZSignClass(stock.performance12) %>" title="<%= stock.performance12 %>"><%= stock.performance12 %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <table class="table table-hover table-sm js-table">
+    <thead>
+      <tr>
+        <th><%= t('layouts.application.noDataYet') %></th>
+      </tr>
+    </thead>
+  </table>
+<% end %>

@@ -1,0 +1,84 @@
+<footer>
+  <div class="shell page-footer-default page-footer-type-1">
+    <div class="range range-30 text-left">
+      <div class="cell-xs-6 cell-lg-3">
+        <h4 class="footer-title"><%= t('layouts.application.categories') %></h4>
+        <ul class="list">
+          <li>
+            <%= link_to t('layouts.application.ourAnalyses'), {:controller => "analyses", :action => "index"} %>
+          </li>
+        </ul>
+      </div>
+      <div class="cell-xs-6 cell-lg-3">
+        <h4 class="footer-title"><%= t('layouts.application.information') %></h4>
+        <ul class="list">
+          <li>
+            <%= link_to(t('layouts.application.about_html'), {:controller => "pages", :action => "about"}) %>
+          </li>
+          <li>
+            <%= link_to(t('layouts.application.contacts'), {:controller => "pages", :action => "contacts"}) %>
+          </li>
+          <li>
+            <%= link_to(t('layouts.application.privacy_html'), {:controller => "pages", :action => "privacy_policy"}) %>
+          </li>
+        </ul>
+      </div>
+      <div class="cell-xs-12 cell-sm-6 cell-lg-3">
+        <h4 class="footer-title"><%= t('layouts.application.marketsTitle') %></h4>
+        <ul class="tag-list-type-1">
+          <% $allTradingMarkets.each do |market| %>
+            <li>
+              <%= link_to( market.country, {:controller => "market", :action => market.country}) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <!--<div class="cell-xs-12 cell-sm-6 cell-lg-3">
+        <h4 class="footer-title"><%= t('layouts.application.sendSuggestionTitle') %></h4>
+        <p class="text-italic">
+          <%= t('layouts.application.sendSuggestionBody') %>
+        </p>-->
+
+
+		    <!--TODO: form suggestions -->
+        <!--
+        <% form_tag '#', class: "rd-mailform text-left rd-mailform-inline", 'data-form-output': "form-output-global", "data-form-type": "contact" do  %>
+            <div class="form-wrap">
+              <label class="form-label rd-input-label" for="contact-message"><%= t('layouts.application.yourComment') %>*</label>
+              <textarea class="form-input form-control-has-validation form-control-last-child" id="contact-message" name="message" data-constraints="@Required"></textarea>
+              <span class="form-validation"></span>
+            </div>
+            <button class="button button-primary" type="submit">
+              <%= t('layouts.application.send') %>
+            </button>
+        <% end %>
+        -->
+
+
+
+
+     <!-- </div>
+    </div>-->
+
+    <div class="range range-center range-xs-30 range-sm-0 footer-bottom-section">
+      <div class="cell-sm-6 text-sm-left">
+        <%= link_to({:controller => "home", :action => "index"}, class: "brand-name") do %>
+          <%= image_tag($imagePath + "tradingradar-logo-text.svg", alt: t('layouts.application.logoDescription')) %>
+        <% end %>
+        <p class="privacy">
+          <%= t('application.name') %> &#169; <span id="copyright-year"></span> &dash; <%= link_to(t('layouts.application.privacy_html'), {:controller => "pages", :action => "privacy_policy"}) %>
+        </p>
+      </div>
+      <div class="cell-sm-6 text-sm-right">
+        <div class="soc-icon">
+          <a class="icon fa-facebook-square" href="<%= t('socials.facebook') %>"></a>
+          <a class="icon fa-twitter" href="<%= t('socials.twitter') %>"></a>
+          <!--<a class="icon fa-facebook-square" href="#"></a>
+					<a class="icon fa-instagram" href="#"></a>
+					<a class="icon fa-youtube-play" href="#"> </a>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,38 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <h1>Market Suggestions Newsletters</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Active</th>
+        <th>Privacy</th>
+        <th>Referrer</th>
+        <th>Sended</th>
+        <th>Total sended</th>
+        <th>Code</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @market_suggestions_newsletters.each do |market_suggestions_newsletter| %>
+        <tr>
+          <td><%= market_suggestions_newsletter.email %></td>
+          <td><%= market_suggestions_newsletter.active %></td>
+          <td><%= market_suggestions_newsletter.privacy %></td>
+          <td><%= market_suggestions_newsletter.referrer %></td>
+          <td><%= market_suggestions_newsletter.sended %></td>
+          <td><%= market_suggestions_newsletter.total_sended %></td>
+          <td><%= market_suggestions_newsletter.code %></td>
+          <td><%= link_to 'Show', market_suggestions_newsletter %></td>
+          <td><%= link_to 'Edit', edit_market_suggestions_newsletter_path(market_suggestions_newsletter) %></td>
+          <td><%= link_to 'Destroy', market_suggestions_newsletter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Market Suggestions Newsletter', new_market_suggestions_newsletter_path %>
+</div>

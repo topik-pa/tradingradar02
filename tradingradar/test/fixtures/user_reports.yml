@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  isin: MyString
+  stock: MyString
+  support: 9.99
+  resistance: 9.99
+  trendshort: MyString
+  trendmedium: MyString
+  trendlong: MyString
+  rating: 1
+  note: MyText
+  buy: 9.99
+  sell: 9.99
+  sl: 9.99
+
+two:
+  isin: MyString
+  stock: MyString
+  support: 9.99
+  resistance: 9.99
+  trendshort: MyString
+  trendmedium: MyString
+  trendlong: MyString
+  rating: 1
+  note: MyText
+  buy: 9.99
+  sell: 9.99
+  sl: 9.99

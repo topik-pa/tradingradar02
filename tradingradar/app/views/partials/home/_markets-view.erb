@@ -1,0 +1,57 @@
+<div class="section-xs">
+	<div class="section-title">
+		<h3><%= t('layouts.application.marketsTitle') %></h3>
+		<p><%= t('layouts.application.marketsubTitle') %></p>
+	</div>
+	<div class="range range-xs-center tabs-custom-wrap">		
+		<div class="cell-sm-12">
+			<div class="tabs-custom tabs-horizontal tabs-custom-type-1" id="tabs-1">
+				<ul class="nav-custom nav-custom-tabs">
+					<% $tradingMarkets.each_with_index do |market, index| %>
+						<li <% if index==0 %>class="active"<% end %> >
+							<%= link_to(market['name'], {:anchor => "tab-" + index.to_s}, {:'data-turbolinks' =>  'false', :'data-toggle' =>  'tab', :'aria-expanded' =>  'false' }) %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<div class="cell-sm-12">
+			<div class="tab-content tab-content-type-1 text-left">
+				<% $tradingMarkets.each_with_index do |market, index| %>
+					<div class="tab-pane fade <% if index==0 %>in active<% end %>" id="<%= 'tab-' + index.to_s %>">
+						<div class="range range-center">
+							<div class="cell-sm-12">
+								<!-- TradingView Widget BEGIN -->
+								<div class="tradingview-widget-container">
+									<div id="<%= market['tradingViewData']['id'] %>" style="height: 500px;"></div>
+									<div class="tradingview-widget-copyright">
+										<a href="<%= market['tradingViewData']['url'] %>" rel="noopener" target="_blank"><span class="blue-text"><%= market['tradingViewData']['name'] %></span></a> from TradingView
+									</div>
+									<% if index==0 %>
+										<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+									<% end %>
+									<script type="text/javascript">
+										new TradingView.widget({
+											"autosize": true,
+											"symbol" : "<%= market['tradingViewData']['symbol'] %>",
+											"interval" : "D",
+											"timezone" : "Etc/UTC",
+											"theme" : "Light",
+											"style" : "1",
+											"locale" : "en",
+											"toolbar_bg" : "#f1f3f6",
+											"enable_publishing" : false,
+											"allow_symbol_change" : true,
+											"container_id" : "<%= market['tradingViewData']['id'] %>"
+										});
+									</script>
+								</div>
+								<!-- TradingView Widget END -->
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

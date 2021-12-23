@@ -1,0 +1,51 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <h1>User Reports</h1>
+  <div class="table-wrapper">
+    <table class="table table-hover table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Isin</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Support</th>
+          <th scope="col">Resistance</th>
+          <th scope="col">Trendshort</th>
+          <th scope="col">Trendmedium</th>
+          <th scope="col">Trendlong</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Note</th>
+          <th scope="col">Buy</th>
+          <th scope="col">Sell</th>
+          <th scope="col">Sl</th>
+          <th scope="col" colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user_reports.each do |user_report| %>
+          <tr class='<%= cycle('odd', 'even') %>'>
+            <td title="<%= user_report.isin %>"><%= user_report.isin %></td>
+            <td title="<%= user_report.stock %>"><%= user_report.stock %></td>
+            <td title="<%= user_report.support %>"><%= user_report.support %></td>
+            <td title="<%= user_report.resistance %>"><%= user_report.resistance %></td>
+            <td title="<%= user_report.trendshort %>"><%= user_report.trendshort %></td>
+            <td title="<%= user_report.trendmedium %>"><%= user_report.trendmedium %></td>
+            <td title="<%= user_report.trendlong %>"><%= user_report.trendlong %></td>
+            <td title="<%= user_report.rating %>"><%= user_report.rating %></td>
+            <td title="<%= user_report.note %>"><%= user_report.note %></td>
+            <td title="<%= user_report.buy %>"><%= user_report.buy %></td>
+            <td title="<%= user_report.sell %>"><%= user_report.sell %></td>
+            <td title="<%= user_report.sl %>"><%= user_report.sl %></td>
+            <td><%= link_to 'Show', user_report %></td>
+            <td><%= link_to 'Edit', edit_user_report_path(user_report) %></td>
+            <td><%= link_to 'Destroy', user_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <%= link_to 'New User Report', new_user_report_path %>
+</div>
+<p id="notice"><%= notice %></p>

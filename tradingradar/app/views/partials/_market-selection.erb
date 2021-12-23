@@ -1,0 +1,10 @@
+<section class="markets-menu shell">
+  <% $allTradingMarkets.each do |market| %>
+    <div class="markets-menu__item">
+      <%= link_to({:controller => "market", :action => market.country}) do %>
+        <span><%= image_tag($imagePath + 'flags/' + market.country + '_icon_32x32.png', alt: market.country + ' ' + t('layouts.application.marketFlag'), class: 'markets-menu__flag') %><span class="markets-menu__name"><%= market.name %></span></span>
+        <span><span class="markets-menu__value"><%= market.value %> </span>&#47;<span class="markets-menu__variation <%= addZSignClass(market.variation) %>"> <%= market.variation %>&#37;</span></span>
+      <% end %>
+    </div>
+  <% end %>
+</section>

@@ -1,0 +1,168 @@
+// Place all the styles related to the Stock controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.stock {
+    h1 {
+        margin: 0;
+    }
+    .section.page-title {
+        padding: 130px 0 65px;
+    }
+    .section-mp { 
+        background-color: $blue;
+        margin: 30px 0;
+    }
+
+    .tooriginal {
+      display: inline-block;
+      text-transform: uppercase;
+      background: #fff;
+      color: #2196F3;
+      padding: 15px 30px;
+      margin-top: 40px;
+      font-weight: bold;
+      border: 1px solid #2196f3;
+      width: 40%;
+
+      &:hover {
+        color: #fff;
+        background: #2196F3;
+      }
+    }
+
+    .borsaitaliana {
+      background-image: url('/images/bg-borsaitaliana.png');
+      padding: 20px 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .ilsole24ore {
+      background-image: url('/images/bg-ilsole24ore.png');
+      padding: 20px 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .milanofinanza {
+      background-image: url('/images/bg-milanofinanza.png');
+      padding: 20px 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+
+    .anchors {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        //padding-top: 30px;
+
+      .anchor-wrap {
+        display: flex;
+        align-items: center;
+      }
+    
+      .anchor {
+        margin: 5px 15px;
+        position:relative;
+        
+        &.loading {
+            background-image: url('https://s3.eu-west-3.amazonaws.com/tradingradar/icons/loader.gif');
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: contain;
+        }
+
+        a {
+          color: $white;
+
+          &:hover {
+            color: #49cc49;
+          }
+        }
+            
+      }
+    }
+}
+
+
+.stock {
+    * + p {
+        margin-top: 5px;
+    }
+  
+    .section-md {
+      padding-top: 50px;
+      padding-bottom: 20px;
+  
+      &.title {
+        padding-top: 80px;
+        padding-bottom: 0px;
+      }
+    }
+  
+    .page-title  {
+      text-shadow: 0 0 4px #000;
+      
+      h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+      }
+      img {
+        margin-right: 20px;
+        max-height: 75px;
+      }
+    }
+  
+    .counter-wrap p { 
+      font-size: 15px;
+      text-shadow: 0 0 1px #333;
+    }
+    .counter {
+      text-shadow: 0 0 1px #333;
+    }
+  
+    .heading-1 {
+      font-size: 26px;
+    }
+  
+    .pr-section {
+      background-color: #fafafa;
+      font-size: 95%!important;
+      padding: 30px;
+  
+      img.m-img {
+        display: none;
+      }
+  
+      h3 {
+        margin: 1em 0;
+        font-size: 130%;
+      }
+  
+      h2 {
+        margin: 1em 0;
+        font-size: 170%;
+      }
+  
+      table {
+        width: initial!important;
+        
+      }
+  
+      .title {
+        font-weight: bold;
+      }
+  
+      &.ilsole24ore {
+        img {
+          height: 24px;
+        }
+      }
+    }
+  
+  }
+

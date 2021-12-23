@@ -1,0 +1,7 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <h1>New Market</h1>
+  <%= render 'form', market: @market %>
+  <%= link_to 'Back', markets_path %>
+</div>

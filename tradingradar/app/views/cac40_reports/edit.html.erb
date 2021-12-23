@@ -1,0 +1,8 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <h1>Editing Cac40 Report</h1>
+  <%= render 'form', cac40_report: @cac40_report %>
+  <%= link_to 'Show', @cac40_report %> |
+  <%= link_to 'Back', cac40_reports_path %>
+</div>

@@ -1,0 +1,67 @@
+<!--Logo and menu-->
+<%= render("partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <!--Content-->
+  <section class="bg-white section-bottom-60 section-xs-type-1">
+   <div class="shell">
+      <div class="range range-center range-40">
+        <div class="cell-md-8 cell-lg-8">
+          <div class="blog-post">
+            <h2><%= t('layouts.searchPage.title') %></h2>
+
+
+            <div class="section">
+              <h3><%= t('layouts.searchPage.subtitle') %></h3>
+              <% if @results.any? %>
+              <ul class="results">
+                <% @results.each do |stock| %>
+                  <li>
+                      <h4>
+                        <%= link_to stock['name'] + ' - ' + stock['isin'], {:controller => "stock", :action => "index", :id => stock['name'].parameterize, :isin => stock['isin']} %>
+                      </h4>
+                      <p>
+                        <%= stock.sector %>
+                      </p>
+                      <p>
+                        <%= truncate_html stock.profile, :length => 320, :omission => "..." %>
+                      </p>
+                  </li>
+                <% end %>
+              </ul>
+              <% else %>
+                <div><%= t('layouts.searchPage.noResults') %></div>
+              <% end%>
+            </div>
+
+            <div class="section">
+              <h3><%= t('layouts.searchPage.subtitle2') %></h3>
+              <% if @resultsOnBlog.any? %>
+                <ul class="results">
+                  <% @resultsOnBlog.each do |post| %>
+                    <li>
+                        <h4>
+                          <%= link_to post['title'], post %>
+                        </h4>
+                        <p>
+                          <%= post.description %>
+                        </p>
+                        <p>
+                          <%= truncate_html post.body, :length => 320, :omission => "..." %>
+                        </p>
+                    </li>
+                  <% end %>
+                </ul>
+                <% else %>
+                  <div><%= t('layouts.searchPage.noResults') %></div>
+                <% end%>
+            </div>
+          </div>
+        </div>
+        <div class="cell-md-4">
+          <%= render("partials/sidebar") %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

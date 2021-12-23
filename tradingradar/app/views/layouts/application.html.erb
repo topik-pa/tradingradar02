@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="wide smoothscroll wow-animation" lang="<%= I18n.locale %>">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<title><%= meta_title %></title>
+
+		<meta name="description" content="<%= meta_description %>" >
+		<meta name="author" content="<%= meta_author %>" >
+		<meta name="robots" content="<%= meta_robots %>" >
+		<meta name="msvalidate.01" content="<%= meta_msvalidate %>" >
+		<meta name="google-site-verification" content="<%= meta_google_site_verification %>" >
+		<% content_for :canonical_link, "http://www.tradingradar.net" %>
+
+		<%= favicon_link_tag asset_path('favicon.ico') %>
+
+
+		<% if canonical_link %>
+			<link rel="canonical" href="<%= canonical_link %>" >
+		<% end %>
+
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+
+		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700'">
+
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>		
+	</head>
+
+	<body class="<%= controller_name + ' ' + action_name %>">
+
+		<div class="text-center page">
+			<%= yield %>
+
+			<!-- Page Footer-->
+			<%= render("partials/footer") %>
+
+			<!--Hidden data input-->
+			<input id="pagedata" type="hidden" data-controller="<%= controller_name %>" data-isin="<%= params[:isin] ? params[:isin] : '' %>" />	
+		</div>
+
+
+		<!-- Javascript-->	
+		<script src="/js/core.min.js"></script>
+		<script src="/js/script.js"></script>
+
+		<!--Modal popups-->
+		<%= render("partials/modal") %>
+
+	</body>
+</html>

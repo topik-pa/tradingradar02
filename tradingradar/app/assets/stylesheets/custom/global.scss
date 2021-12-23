@@ -1,0 +1,430 @@
+/*Utility classes*/
+.notice {
+  color: $notice;
+}
+.alert {
+  color: $alert;
+}
+
+.hide {
+  display: none;
+}
+.strong {
+  font-weight: bold;
+}
+.center {
+  text-align: center;
+}
+.emph {
+  font-size: 140%;
+  color: #000000;
+}
+
+.negative {
+  color: $red;
+}
+.positive {
+  color: $green;
+}
+
+
+
+/*Global elements styles*/
+h1 {
+  margin: 30px 0;
+}
+.section {
+  margin: 40px 0;
+}
+
+.alert-wrapper {
+	margin: 10px 0;
+}
+
+
+
+//Choose market on the top
+.markets-menu {
+  display: flex;
+  a {
+    display: block;
+    color: $text;
+    font-size: 110%;
+    border-bottom: 1px solid $white;
+    &:hover {
+      background-color: $background;
+      border-color: $text;
+    }
+    > span {
+      display: block;
+    }
+  }
+  
+  &__item {
+    flex-grow: 1;
+    text-align: center;
+  }
+    
+    &__flag {
+      vertical-align: top;
+      margin-right: 18px;
+    }
+    &__name {
+      font-size: 125%;
+      font-weight: bold;
+      font-style: italic;
+      text-decoration: underline;   
+    }
+    &__variation {
+      font-size: 110%;
+      font-weight: bold;
+      &.negative {
+        color: $red;
+      }
+      &.positive {
+        color: $green;
+      }
+    }
+}
+
+
+
+
+
+/*In some page the admin can update the DB...*/
+.administration {
+  background: $background;
+  padding: 1%;
+  margin: 5% 0;
+  border: 1px solid #bebebe;
+}
+
+
+
+/*Mobile version of some elements*/
+html.rd-navbar-fixed-linked  {
+  .page {
+    padding-top: 0;
+  }
+  .markets {
+    padding-top: 55px;
+  }
+  .brand-name {
+    span img {
+      width: 66px;
+    }
+  }
+  
+  .main-banner {
+    .post-type-1 {
+      .caption {
+        h2.title {
+          font-size: 120%;
+          color: $white;
+        }
+      }
+    }  
+  }
+}
+
+
+
+/*Choose language*/
+.header-home-1 .rd-navbar-collapse .contact-list {
+  text-align:right;
+  .language a {
+    color: $text;
+  }
+}
+
+
+/*Logo and header*/
+.brand-name {
+  img {
+    height: 60px;
+  }
+}
+footer .brand-name {
+  img {
+    height: 45px;
+  }
+}
+
+header.light {
+  span img {
+    width: 60px;
+  }
+  .rd-navbar-static .rd-navbar-inner {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .rd-navbar-static.rd-navbar {
+    background: rgba(0,0,0,0.5);
+  }
+}
+
+.header-home-1 .rd-navbar-fullwidth .rd-navbar-panel {
+  padding: 20px 0;
+}
+
+
+
+
+/*Some newsletter style*/
+.nl-wrapper {
+  margin-bottom: 40px; 
+  .form-wrap.privacy {
+    text-align: left;
+    padding-left: 20px;
+    label, .label-like {
+      font-weight: normal;
+      font-size: 80%;
+    }
+    input[type="checkbox"] {
+      left: 0;
+      position: absolute;
+    }
+  }
+  .form-wrap.form-footer {
+    .btn {
+      width: 100%;
+      margin-bottom: 10px; 
+    }
+  }
+}
+
+
+/*Banners*/
+.post-type-1:after {
+  background: linear-gradient(to top,#0a0a0a 0,rgba(10,10,10,0) 120%);
+}
+.main-banner {
+  .post-type-1 {
+    .caption {
+      bottom: 25px;
+      width: 100%;
+      left: 0;
+      padding: 50px;
+      background: rgba(0,0,0, 0.7);
+      //box-shadow: 0px 20px 20px 40px rgba(0, 0, 0, 0.7);
+      h2.title {
+        font-size: 220%;
+        line-height: 1.4;
+        text-shadow: 0 0 4px $black;
+      }
+    }  
+    .fig-caption {
+      color: rgba(255,255,255, 1);
+      background: rgba(0,0,0, 1);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 0 5px;
+      font-size: 105%;
+      text-align: right;
+      height: 25px;
+      line-height: 25px;
+    }  
+    &:after {
+      background: none;
+      content: none;
+    }
+  }  
+}
+.second {
+  .caption {
+    width: 100%;
+    left: 0;
+    padding: 15px 25px;
+    background: rgba(0,0,0, 0.6);
+    color: $white;
+    bottom: 0;
+  }
+  .title {
+    color: $white;
+    text-shadow: 0 0 4px $black;
+  }
+}
+.third {
+  .post-type-1{
+    .caption {
+      bottom: 50px;
+      img {
+        height: 65px;
+        left: initial;
+        transform: initial;
+        margin: 0;
+        margin-right: 20px;
+      }
+      h3 {
+        vertical-align: middle;
+        display: inline-block;
+        text-shadow: 0 0 4px $black;
+        a {
+          color: $white;
+        }
+      }
+      h4 {
+        text-shadow: 0 0 4px $black;
+      }
+      p {
+        margin: 3px 0;
+        font-weight: bolder;
+      }
+    }
+  }
+  
+}
+
+
+
+/*Modal popup*/
+.modal {
+  .modal-dialog {
+    p {
+      font-style: italic; 
+      margin: 15px 0;
+    }
+    input[type="checkbox"] {
+      display: block; 
+    }
+    .form-input {
+      color: $text;
+    }
+  }
+}
+
+#modalPrivacy {
+  .modal-dialog {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+/*General color updates*/
+.header-home-1 .rd-navbar-collapse .contact-list a, .meta-list li a, .ui-to-top:hover, a, .breadcrumb-custom > li > a, .icon-primary {
+  color: $blue;
+}
+.tag-list li a {
+  background: $blue;
+  text-transform: capitalize;
+}
+.modal .modal-dialog .close {
+  background: $blue;
+}
+.button-primary {
+  background-color: $blue;
+  border-color: $blue-darker;
+}
+.button-primary:hover, .button-primary:focus, .button-primary:active, .button-primary:hover {
+  background-color: $blue;
+  border-color: $blue-darker;
+}
+.table-custom.table-primary tbody tr th {
+  background: $blue;
+  color: $white;
+  border-top-color: $blue-darker;
+}
+
+
+
+/*Filters*/
+.filters {
+  margin-bottom: 50px;
+}
+.section-title h4 {
+  text-transform: capitalize;
+}
+
+
+
+/*Side bar forms*/
+.sidebar-form-block .form-label {
+  padding-right: 4px;
+  border-right: 1px solid #c0c1c1;
+}
+
+.sidebar-form-block .form-input {
+  border-radius: 0;
+  padding: 10px 20px 10px 50px;
+  font-style: italic;
+  color: $text;
+  text-indent: 2px;
+}
+#follow_stock_newsletters_wrap_sidebar {
+  border-bottom: 1px solid #e6e6e6;
+  padding-bottom: 40px;
+}
+
+
+/*Modals style*/
+.modal .modal-dialog .form-input {
+  text-indent: 2px;
+}
+
+/*Images on transformation*/
+.transform {
+  img {
+    vertical-align: bottom;
+  }
+}
+
+
+/*Search*/
+.header-home-1 .rd-navbar-fullwidth .rd-navbar-search .rd-search .form-input {
+  border-color: #dedede;
+}
+
+
+/*Result*/
+.results li {
+  margin-top: 40px;
+}
+
+
+
+
+/*Form validation*/
+/*.form-validation {
+  text-align: left;
+  display: block;
+  font-size: 13px;
+  margin-top: 3px;
+}*/
+
+
+/*Images in top 4 filters*/
+/*.post-type-2 {
+  min-height: 180px;
+  .img-block {
+    min-height: 50px;
+    margin-bottom: 30px;
+    img {
+      max-height: 60px;
+      width: auto;
+    }
+    + .caption {
+      margin: 15px 10px;
+      h5 + * {
+        margin-top: 10px;
+      }
+    }
+  }
+}*/
+/*Images in Last blog post*/
+/*.post-type-3 .img-block img {
+  max-height: 70px;
+}*/
+
+
+/*textarea.suggestions {
+  height: initial;
+  min-height: initial;
+  max-height: initial;
+  overflow: hidden;
+}*/

@@ -1,0 +1,24 @@
+<!--Market selection in top page -->
+<%= render("partials/market-selection") %>
+<!--Logo and menu-->
+<%= render("partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <%= render("partials/banners/banner") %>
+  <section class="bg-white section-bottom-60">
+    <div class="shell">
+      <div class="range range-center range-40">
+        <div class="cell-md-8 cell-lg-8">
+          <%= render("partials/market-homepage/stock-list") %>
+          <%= render("partials/market-homepage/filters") %>
+        </div>
+        <div class="cell-md-4">
+          <%= render("partials/sidebar") %>
+        </div>
+        <div class="cell-md-12">
+          <% #render("partials/last-posts") %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

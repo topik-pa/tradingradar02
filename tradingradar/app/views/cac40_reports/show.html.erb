@@ -1,0 +1,87 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Isin:</strong>
+    <%= @cac40_report.isin %>
+  </p>
+  <p>
+    <strong>Stock:</strong>
+    <%= @cac40_report.stock %>
+  </p>
+  <p>
+    <strong>Tradingsat trendshort:</strong>
+    <%= @cac40_report.tradingsat_trendshort %>
+  </p>
+  <p>
+    <strong>Tradingsat trendmedium:</strong>
+    <%= @cac40_report.tradingsat_trendmedium %>
+  </p>
+  <p>
+    <strong>Tradingsat trendlong:</strong>
+    <%= @cac40_report.tradingsat_trendlong %>
+  </p>
+  <p>
+    <strong>Boursefortuneo support:</strong>
+    <%= @cac40_report.boursefortuneo_support %>
+  </p>
+  <p>
+    <strong>Boursefortuneo resistance:</strong>
+    <%= @cac40_report.boursefortuneo_resistance %>
+  </p>
+  <p>
+    <strong>Boursefortuneo volatility:</strong>
+    <%= @cac40_report.boursefortuneo_volatility %>
+  </p>
+  <p>
+    <strong>Boursefortuneo target:</strong>
+    <%= @cac40_report.boursefortuneo_target %>
+  </p>
+  <p>
+    <strong>Boursefortuneo rating:</strong>
+    <%= @cac40_report.boursefortuneo_rating %>
+  </p>
+  <p>
+    <strong>Boursefortuneo trendshort:</strong>
+    <%= @cac40_report.boursefortuneo_trendshort %>
+  </p>
+  <p>
+    <strong>Boursefortuneo trendmedium:</strong>
+    <%= @cac40_report.boursefortuneo_trendmedium %>
+  </p>
+  <p>
+    <strong>Zonebourse trendshort:</strong>
+    <%= @cac40_report.zonebourse_trendshort %>
+  </p>
+  <p>
+    <strong>Zonebourse trendmedium:</strong>
+    <%= @cac40_report.zonebourse_trendmedium %>
+  </p>
+  <p>
+    <strong>Zonebourse trendlong:</strong>
+    <%= @cac40_report.zonebourse_trendlong %>
+  </p>
+  <p>
+    <strong>Zonebourse resistance:</strong>
+    <%= @cac40_report.zonebourse_resistance %>
+  </p>
+  <p>
+    <strong>Zonebourse support:</strong>
+    <%= @cac40_report.zonebourse_support %>
+  </p>
+  <p>
+    <strong>Abcbourse consensus:</strong>
+    <%= @cac40_report.abcbourse_consensus %>
+  </p>
+  <p>
+    <strong>Abcbourse tendency:</strong>
+    <%= @cac40_report.abcbourse_tendency %>
+  </p>
+  <p>
+    <strong>Lefigaro consensus:</strong>
+    <%= @cac40_report.lefigaro_consensus %>
+  </p>
+  <%= link_to 'Edit', edit_cac40_report_path(@cac40_report) %> |
+  <%= link_to 'Back', cac40_reports_path %>
+</div>

@@ -1,0 +1,68 @@
+  <%= render("./partials/header/header") %>
+  <!--The main content-->
+  <div class="shell">
+    <p id="notice"><%= notice %></p>
+    <h1>Stocks</h1>
+    <div class="table-wrapper">
+      <table class="table table-hover table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Isin</th>
+            <th scope="col">Reuters</th>
+            <th scope="col">Name</th>
+            <th scope="col">Sector</th>
+            <th scope="col">Last price</th>
+            <th scope="col">Variation</th>
+            <th scope="col">Market phase</th>
+            <th scope="col">Corporate url</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone</th> 
+            <th scope="col">Market</th>
+            <th scope="col">Currency</th>
+            <th scope="col">Profile</th>
+            <th scope="col">Keywords</th>
+            <th scope="col">Dividend</th>
+            <th scope="col">Dividend date</th>
+            <th scope="col">Dividend yeld</th>
+            <th scope="col">Performance1</th>
+            <th scope="col">Performance6</th>
+            <th scope="col">Performance12</th>
+            <th scope="col">Code</th>
+            <th scope="col" colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @stocks.each do |stock| %>
+            <tr class='<%= cycle('odd', 'even') %>'>
+              <td title="<%= stock.isin %>"><%= stock.isin %></td>
+              <td title="<%= stock.reuters %>"><%= stock.reuters %></td>
+              <td title="<%= stock.name %>"><%= stock.name %></td>
+              <td title="<%= stock.sector %>"><%= stock.sector %></td>
+              <td title="<%= stock.last_price %>"><%= stock.last_price %></td>
+              <td title="<%= stock.variation %>"><%= stock.variation %></td>
+              <td title="<%= stock.market_phase %>"><%= stock.market_phase %></td>
+              <td title="<%= stock.corporate_url %>"><%= stock.corporate_url %></td>
+              <td title="<%= stock.address %>"><%= stock.address %></td>
+              <td title="<%= stock.phone %>"><%= stock.phone %></td>
+              <td title="<%= stock.market %>"><%= stock.market %></td>
+              <td title="<%= stock.currency %>"><%= stock.currency %></td>
+              <td title="<%= stock.profile %>"><%= stock.profile %></td>
+              <td title="<%= stock.keywords %>"><%= stock.keywords %></td>
+              <td title="<%= stock.dividend %>"><%= stock.dividend %></td>
+              <td title="<%= stock.dividend_date %>"><%= stock.dividend_date %></td>
+              <td title="<%= stock.dividend_yeld %>"><%= stock.dividend_yeld %></td>
+              <td title="<%= stock.performance1 %>"><%= stock.performance1 %></td>
+              <td title="<%= stock.performance6 %>"><%= stock.performance6 %></td>
+              <td title="<%= stock.performance12 %>"><%= stock.performance12 %></td>
+              <td title="<%= stock.code %>"><%= stock.code %></td>
+              <td><%= link_to 'Show', stock %></td>
+              <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
+              <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <%= link_to 'New Stock', new_stock_path %>
+  </div>

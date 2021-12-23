@@ -1,0 +1,8 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <h1>Editing Stock</h1>
+  <%= render 'form', stock: @stock %>
+  <%= link_to 'Show', @stock %> |
+  <%= link_to 'Back', stocks_path %>
+</div>

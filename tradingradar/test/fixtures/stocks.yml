@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  isin: IT0001233417
+  reuters: A2A
+  name: A2a
+  sector: Servizi Pubblici
+  last_price: 1.5575
+  variation: -1.58
+  market_phase: Chiusura
+  corporate_url: http://www.a2a.eu
+  address: Via Lamarmora 230
+  phone: 030/35531
+  market: MI
+  currency: EUR
+  profile: Descrizione stock...
+  keywords: MyString
+  dividend: 0.0578
+  dividend_date: 2018-05-24
+  dividend_yeld: 3.67
+  performance1: 3.87
+  performance6: -1.67
+  performance12: 9.99
+
+two:
+  isin: MyString
+  reuters: MyString
+  name: MyString
+  sector: MyString
+  last_price: 9.99
+  variation: 9.99
+  market_phase: MyString
+  corporate_url: MyString
+  address: MyString
+  phone: MyString
+  market: MyString
+  currency: MyString
+  profile: MyText
+  keywords: MyString
+  dividend: 9.99
+  dividend_date: 2018-05-24
+  dividend_yeld: 9.99
+  performance1: 9.99
+  performance6: 9.99
+  performance12: 9.99

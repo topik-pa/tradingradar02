@@ -1,0 +1,2 @@
+module Dax30ReportsHelper
+end

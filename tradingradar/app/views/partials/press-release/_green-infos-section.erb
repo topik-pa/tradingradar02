@@ -1,0 +1,59 @@
+<section class="section-md bg-image context-dark" style=" background-image: url(/images/counter-bg.jpg);">
+    <div class="shell">
+        <div class="range range-xs-center">
+            <div class="cell-xs-10 cell-sm-8 cell-md-12">
+                <div class="range range-xs-center range-60">
+
+                    <div class="cell-xs-5 cell-md-2">
+                        <div class="counter-wrap">
+                            <div class="heading-1"><span class="counter animated" data-step="3000"><%= if @stock.last_price.nil? then '-' else ('&euro;'+@stock.last_price.to_s).html_safe end  %></span></div>
+                            <p class="counter-text-type-1"><%= t('layouts.application.lastPrice') %></p>
+                            <div class="divider divider-white">   </div>
+                        </div>
+                    </div>
+
+                    <div class="cell-xs-5 cell-md-2">
+                        <div class="counter-wrap">
+                            <div class="heading-1"><span class="counter animated" data-speed="2500"><%= if @stock.variation.nil? then '-' else @stock.variation end  %>&percnt;</span></div>
+                            <p class="counter-text-type-1"><%= t('layouts.application.variation') %></p>
+                            <div class="divider divider-white">   </div>
+                        </div>
+                    </div>
+
+                    <div class="cell-xs-5 cell-md-2">
+                        <div class="counter-wrap">
+                            <div class="heading-1"><span class="counter animated" data-step="1500"><%= if @stock.dividend.nil? then '-' else ('&euro;'+@stock.dividend.to_s).html_safe end  %></span></div>
+                            <p class="counter-text-type-1"><%= t('layouts.application.dividend') %></p>
+                            <div class="divider divider-white">   </div>
+                        </div>
+                    </div>
+
+                    <div class="cell-xs-5 cell-md-2">
+                        <div class="counter-wrap">
+                            <div class="heading-1"><span class="counter animated" data-step="1500"><%= if @stock.dividend_date.nil? then '-' else @stock.dividend_date end  %></span></div>
+                            <p class="counter-text-type-1"><%= t('layouts.application.dividendDate') %></p>
+                            <div class="divider divider-white">   </div>
+                        </div>
+                    </div>
+
+                    <div class="cell-xs-5 cell-md-2">
+                        <div class="counter-wrap">
+                            <div class="heading-1"><span class="counter animated" data-step="1500"><%= if @stock.dividend_yeld.nil? then '-' else @stock.dividend_yeld end  %>&percnt;</span></div>
+                            <p class="counter-text-type-1"><%= t('layouts.application.dividendYeld') %></p>
+                            <div class="divider divider-white">   </div>
+                        </div>
+                    </div>
+
+                    <div class="cell-xs-5 cell-md-2">
+                        <div class="counter-wrap">
+                            <div class="heading-1"><span class="counter animated" data-speed="1300"><%=  if @stock.market_phase.nil? then '-' else @stock.market_phase end %></span></div>
+                            <p class="counter-text-type-1"><%= t('layouts.application.marketPhase') %></p>
+                            <div class="divider divider-white">   </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

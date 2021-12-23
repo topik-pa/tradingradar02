@@ -1,0 +1,54 @@
+<%= render("./partials/header/header") %>
+<!--The main content-->
+<div class="shell">
+  <p id="notice"><%= notice %></p>
+  <h1>Source Italies</h1>
+  <div class="table-wrapper">
+    <table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Isin</th>
+        <th scope="col">Name</th>
+        <th scope="col">Url 0</th>
+        <th scope="col">Url 1</th>
+        <th scope="col">Url 2</th>
+        <th scope="col">Url 3</th>
+        <th scope="col">Url 4</th>
+        <th scope="col">Url 5</th>
+        <th scope="col">Url 6</th>
+        <th scope="col">Url 7</th>
+        <th scope="col">Url 8</th>
+        <th scope="col">Url 9</th>
+        <th scope="col">Url 10</th>
+        <th scope="col">Url 11</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @source_italies.each do |source_italy| %>
+        <tr class='<%= cycle('odd', 'even') %>'>
+          <td title="<%= source_italy.isin %>"><%= source_italy.isin %></td>
+          <td title="<%= source_italy.name %>"><%= source_italy.name %></td>
+          <td title="<%= source_italy.url_0 %>"><%= source_italy.url_0 %></td>
+          <td title="<%= source_italy.url_1 %>"><%= source_italy.url_1 %></td>
+          <td title="<%= source_italy.url_2 %>"><%= source_italy.url_2 %></td>
+          <td title="<%= source_italy.url_3 %>"><%= source_italy.url_3 %></td>
+          <td title="<%= source_italy.url_4 %>"><%= source_italy.url_4 %></td>
+          <td title="<%= source_italy.url_5 %>"><%= source_italy.url_5 %></td>
+          <td title="<%= source_italy.url_6 %>"><%= source_italy.url_6 %></td>
+          <td title="<%= source_italy.url_7 %>"><%= source_italy.url_7 %></td>
+          <td title="<%= source_italy.url_8 %>"><%= source_italy.url_8 %></td>
+          <td title="<%= source_italy.url_9 %>"><%= source_italy.url_9 %></td>
+          <td title="<%= source_italy.url_10 %>"><%= source_italy.url_10 %></td>
+          <td title="<%= source_italy.url_11 %>"><%= source_italy.url_11 %></td>
+          <td><%= link_to 'Show', source_italy %></td>
+          <td><%= link_to 'Edit', edit_source_italy_path(source_italy) %></td>
+          <td><%= link_to 'Destroy', source_italy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+  <br>
+  <%= link_to 'New Source Italy', new_source_italy_path %>
+</div>

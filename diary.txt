@@ -1,0 +1,136 @@
+#Creo l'applicazione
+rails new tradingradar --database=postgresql
+
+#Imposto il repository Git
+git init
+git add .
+git commit -m "init"
+
+#Creo il database
+$ sudo -u <user> createdb <dbname>
+<user> deve essere l'utente linux corrente
+In database.yml metto le credenziali dell'utente linux corrente
+
+#Imposto il DB e il relativo scaffolding
+rails generate scaffold Stock isin:string reuters:string name:string sector:string last_price:decimal variation:decimal market_phase:string corporate_url:string address:string phone:string market:string currency:string profile:text keywords:string dividend:decimal dividend_date:date dividend_yeld:decimal performance1:decimal performance6:decimal performance12:decimal
+
+rails generate scaffold Source isin:string name:string url_0:string name_0:string cod_0:string url_1:string name_1:string cod_1:string url_2:string name_2:string cod_2:string url_3:string name_3:string cod_3:string url_4:string name_4:string cod_4:string url_5:string name_5:string cod_5:string url_6:string name_6:string cod_6:string url_7:string name_7:string cod_7:string url_8:string name_8:string cod_8:string url_9:string name_9:string cod_9:string url_10:string name_10:string cod_10:string url_11:string name_11:string cod_11:string url_12:string name_12:string cod_12:string url_13:string name_13:string cod_13:string url_14:string name_14:string cod_14:string url_15:string name_15:string cod_15:string url_16:string name_16:string cod_16:string url_17:string name_17:string cod_17:string url_18:string name_18:string cod_18:string url_19:string name_19:string cod_19:string
+
+rails generate scaffold FiasReport isin:string stock:string borsaitaliana_support:decimal borsaitaliana_resistance:decimal borsaitaliana_fta:integer borsaitaliana_rsi:decimal borsaitaliana_volatility:decimal sole24ore_support:decimal sole24ore_resistance:decimal sole24ore_shorttrend:string sole24ore_fta:integer sole24ore_rsi:integer sole24ore_rsidiv:string sole24ore_strategy:text milanofinanza_risk:decimal milanofinanza_rating:string milanofinanza_trendshort:string milanofinanza_trendmedium:string milanofinanza_trendlong:string teleborsa_support:decimal teleborsa_resistance:decimal
+
+rails generate scaffold Cac40Report isin:string stock:string tradingsat_trendshort:string tradingsat_trendmedium:string tradingsat_trendlong:string boursefortuneo_support:decimal boursefortuneo_resistance:decimal boursefortuneo_volatility:decimal boursefortuneo_target:decimal boursefortuneo_rating:decimal boursefortuneo_trendshort:string boursefortuneo_trendmedium:string zonebourse_trendshort:string zonebourse_trendmedium:string zonebourse_trendlong:string zonebourse_resistance:decimal zonebourse_support:decimal abcbourse_consensus:string abcbourse_tendency lefigaro_consensus
+
+rails generate scaffold Dax30Report isin:string stock:string finanzen_rating:decimal finanzen_ratingmoodys:decimal finanzen_sentiment:decimal 
+
+rails generate scaffold Ibex35Report isin:string stock:string
+
+rails generate scaffold Ftse100Report isin:string stock:string
+
+rails generate scaffold Nasdaq100Report isin:string stock:string
+
+rails generate scaffold Sp100Report isin:string stock:string
+
+rails generate scaffold UserReport isin:string stock:string support:decimal resistance:decimal trendshort:string trendmedium:string trendlong:string rating:integer note:text buy:decimal sell:decimal sl:decimal
+
+rails generate scaffold Market name:string value:decimal variation:decimal country:string
+User: autogeneretad by Rails plugin (check if: name, surname, email, age, country, sex, privacy, password)
+
+
+rails generate scaffold follow-stock-newsletter stock:string isin:string email:string active:boolean privacy:boolean referrer:string  
+
+
+#Applico i modificatori alle colonne del DB creato
+
+
+#Applico la validazione alle colonne del DB creato
+
+#Creo le tabelle join
+rails g migration CreateJoinTableStockSource stock source
+
+rails g migration CreateJoinTableStockFias stock fias_report
+
+rails g migration CreateJoinTableStockCac40 stock cac40_report
+
+rails g migration CreateJoinTableStockDax30 stock dax30_report
+
+
+
+
+
+#Creo un file seed.rb per caricare i primi dati di test
+
+
+#Comandi da effettuare (solo per test):
+rake db:migrate:redo
+rake db:setup
+
+
+#Mostro tutte le tabelle del DB (in console)
+ActiveRecord::Base.connection.tables
+
+
+
+
+test = ActiveRecord::Base.connection.execute('SELECT * FROM Stocks JOIN Sources ON Stocks.id=Sources.id;')
+puts test.all.map(&:inspect).join("\n")
+
+
+
+//Reset remote database
+heroku pg:reset
+
+heroku run rake db:schema:load DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+
+heroku run rake db:migrate
+
+heroku run rake db:seed
+
+#heroku run rake db:reset DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+
+
+
+
+
+
+
+
+
+SELECT  "sources".* FROM "sources" INNER JOIN "urls" ON "urls"."source_id" = "sources"."id" INNER JOIN "stocks" ON "stocks"."id" = "urls"."stock_id"
+
+
+ActiveRecord::Base.connection.execute('SELECT  "sources".* FROM "sources" INNER JOIN "urls" ON "urls"."source_id" = "sources"."id" INNER JOIN "stocks" ON "stocks"."id" = "urls"."stock_id"')
+
+
+ActiveRecord::Base.connection.execute('SELECT  "sources".* FROM "sources" LEFT JOIN "stocks" ON "sources"."id" = "stocks"."stock_id"')
+
+
+ActiveRecord::Base.connection.execute('SELECT  "sources".* FROM "sources" LEFT JOIN "urls" ON "urls"."source_id" = "sources"."id" LEFT JOIN "stocks" ON "stocks"."id" = "urls"."stock_id"')
+
+
+ActiveRecord::Base.connection.execute('SELECT  "sources".* FROM "sources" INNER JOIN "urls" ON "urls"."source_id" = "sources"."id" INNER JOIN "stocks" ON "stocks"."id" = "urls"."stock_id"')
+
+
+sql = <<-SQL
+    SELECT *
+    FROM Stocks
+    JOIN Fias_Reports
+    ON Stocks.isin = Fias_Reports.isin
+    WHERE borsaitaliana_fta = 4
+    ORDER BY RANDOM() 
+    LIMIT 5
+    ;
+  SQL
+
+
+
+
+
+HOW TO USE DB
+Un nuovo stock lo aggiungo come nuova entry della tabella Source
+L'applicazione la userà per creare un nuovo entry in Stock e un nuovo entry nella table del mercato corretto
+
+
+Aggiungere un mercato
+1. create la table in DB
+2. aggiornare il json aggiungendo le url sorgenti e i path per il nuovo mercato
+3. in application_controller aggiungere la casistica nuova in metodo updateFromSource (case obj[:country]...)
